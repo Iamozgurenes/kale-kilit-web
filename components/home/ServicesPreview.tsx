@@ -1,36 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Home, Car, Lock, KeyRound } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import ServiceCard from "@/components/ui/ServiceCard";
+import Button from "@/components/ui/Button";
 import { staggerContainer } from "@/lib/animations";
+import { SERVICES } from "@/lib/data/services";
 
-const SERVICES = [
-  {
-    icon: Home,
-    title: "Ev Çilingiri",
-    description: "Kapıda kalma, anahtar kırılması ve kilit arızalarına anında müdahale.",
-  },
-  {
-    icon: Car,
-    title: "Oto Çilingir",
-    description: "Araç içinde kalan anahtarlar ve immobilizer sorunlarına hızlı çözüm.",
-  },
-  {
-    icon: Lock,
-    title: "Kasa Açma",
-    description: "Şifresi unutulan veya arızalanan kasalarda hasarsız açılış.",
-  },
-  {
-    icon: KeyRound,
-    title: "Kilit Değişimi",
-    description: "Güvenlik seviyenizi artıran çelik kapı ve göbek kilit değişimi.",
-  },
-];
+export default function ServicesPreview() {
+  const featured = SERVICES.slice(0, 4);
 
-export default function Services() {
   return (
-    <section id="hizmetler" className="bg-white py-20 sm:py-28">
+    <section className="bg-white py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mx-auto mb-12 max-w-2xl text-center">
           <h2 className="text-3xl font-extrabold text-navy sm:text-4xl">
@@ -48,10 +29,22 @@ export default function Services() {
           viewport={{ once: true, amount: 0.3 }}
           className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
         >
-          {SERVICES.map((service) => (
-            <ServiceCard key={service.title} {...service} />
+          {featured.map((service) => (
+            <ServiceCard
+              key={service.slug}
+              icon={service.icon}
+              title={service.title}
+              description={service.shortDescription}
+            />
           ))}
         </motion.div>
+
+        <div className="mt-12 flex justify-center">
+          <Button href="/hizmetler" variant="secondary" className="text-navy! ring-navy/20! bg-navy/5! hover:bg-navy/10!">
+            Tüm Hizmetleri Gör
+            <ArrowRight className="h-5 w-5" />
+          </Button>
+        </div>
       </div>
     </section>
   );

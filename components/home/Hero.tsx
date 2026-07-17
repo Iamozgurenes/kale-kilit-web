@@ -60,7 +60,7 @@ export default function Hero() {
             <PhoneCall className="h-5 w-5" />
             Hemen Ara
           </Button>
-          <Button href="#hizmetler" variant="secondary" className="w-full sm:w-auto">
+          <Button href="/hizmetler" variant="secondary" className="w-full sm:w-auto">
             <Wrench className="h-5 w-5" />
             Hizmetlerimiz
           </Button>
