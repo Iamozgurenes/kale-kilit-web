@@ -33,6 +33,7 @@ export default function BlogCard({
             src={coverImage}
             alt={title}
             fill
+            unoptimized
             className="object-cover transition duration-500 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, 33vw"
           />

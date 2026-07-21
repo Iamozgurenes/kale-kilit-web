@@ -24,6 +24,7 @@ export default function PageHeader({
         src={background}
         alt=""
         fill
+        unoptimized
         priority
         sizes="100vw"
         className="object-cover object-center"

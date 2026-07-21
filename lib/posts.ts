@@ -19,7 +19,7 @@ type PostRecord = RecordModel & {
 
 function mapPost(pb: PocketBase, record: PostRecord): Post {
   const coverImage = record.cover_image
-    ? pb.files.getURL(record, record.cover_image)
+    ? pb.files.getURL(record, record.cover_image, { thumb: "1000x0" })
     : null;
 
   return {

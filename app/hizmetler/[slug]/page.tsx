@@ -51,6 +51,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           src={getBannerImage("/hizmetler/[slug]")}
           alt=""
           fill
+          unoptimized
           priority
           sizes="100vw"
           className="object-cover object-center"
@@ -120,6 +121,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                     src={service.coverImage}
                     alt={service.title}
                     fill
+                    unoptimized
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 40vw"
                   />
@@ -174,6 +176,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                           src={item.coverImage}
                           alt={item.title}
                           fill
+                          unoptimized
                           className="object-cover transition duration-500 group-hover:scale-105"
                           sizes="(max-width: 768px) 100vw, 33vw"
                         />

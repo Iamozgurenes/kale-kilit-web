@@ -31,6 +31,7 @@ export default function ServiceCard({
             src={coverImage}
             alt={title}
             fill
+            unoptimized
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             className="object-cover object-center transition duration-700 ease-out group-hover:scale-110"
           />

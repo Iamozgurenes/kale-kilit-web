@@ -87,6 +87,7 @@ export default function ServicesGallery() {
                   src={service.coverImage}
                   alt={service.title}
                   fill
+                  unoptimized
                   className="object-cover transition duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />

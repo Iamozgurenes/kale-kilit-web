@@ -54,7 +54,7 @@ function parseDetails(value: ServiceRecord["details"]): string[] {
 
 function mapService(pb: PocketBase, record: ServiceRecord): Service {
   const coverImage = record.cover_image
-    ? pb.files.getURL(record, record.cover_image)
+    ? pb.files.getURL(record, record.cover_image, { thumb: "1000x0" })
     : null;
 
   return {

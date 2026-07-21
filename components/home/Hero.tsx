@@ -60,6 +60,7 @@ export default function Hero() {
               src={slide.image}
               alt={`${slide.title} ${slide.highlight}`}
               fill
+              unoptimized
               priority={index === 0}
               sizes="100vw"
               className="object-cover object-center"

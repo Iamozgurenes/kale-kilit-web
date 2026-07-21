@@ -59,6 +59,7 @@ export default async function BlogDetailPage({ params }: Props) {
           src={getBannerImage("/blog/[slug]")}
           alt=""
           fill
+          unoptimized
           priority
           sizes="100vw"
           className="object-cover object-center"
@@ -105,6 +106,7 @@ export default async function BlogDetailPage({ params }: Props) {
                   src={post.coverImage}
                   alt={post.title}
                   fill
+                  unoptimized
                   className="object-cover"
                   sizes="100vw"
                 />
@@ -125,6 +127,7 @@ export default async function BlogDetailPage({ params }: Props) {
                     src={post.coverImage}
                     alt={post.title}
                     fill
+                    unoptimized
                     className="object-cover"
                     sizes="33vw"
                   />
