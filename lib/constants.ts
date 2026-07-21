@@ -3,10 +3,10 @@ const WHATSAPP_MESSAGE =
 
 export const SITE = {
   name: "Kale Kilit & Çilingir",
-  phone: "0535 528 24 22",
-  phoneHref: "tel:+905355282422",
-  whatsappNumber: "905355282422",
-  whatsappHref: `https://wa.me/905355282422?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`,
+  phone: "0530 990 85 80",
+  phoneHref: "tel:+905309908580",
+  whatsappNumber: "905309908580",
+  whatsappHref: `https://wa.me/905309908580?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`,
   whatsappMessage: WHATSAPP_MESSAGE,
   email: "info@kalekilitadana.com",
   address: "Yurt, Kurttepe Cd. Unalır AP zemin KT. 8/C, 01360 Çukurova/Adana",
