@@ -178,7 +178,7 @@ export default function AboutPage() {
                 className="relative rounded-2xl bg-neutral-50 p-6 md:ring-1 md:ring-black/5"
               >
                 <span className="absolute -left-[2.4rem] top-7 h-3 w-3 rounded-full bg-accent md:hidden" />
-                <p className="text-sm font-bold text-accent">{item.year}</p>
+                <p className="text-sm font-bold text-accent-ink">{item.year}</p>
                 <h3 className="mt-2 text-lg font-bold text-navy">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-black/60">
                   {item.description}

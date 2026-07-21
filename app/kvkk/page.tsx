@@ -32,7 +32,7 @@ export default function KvkkPage() {
                 <li>Adres: {SITE.address}</li>
                 <li>
                   Telefon:{" "}
-                  <a href={SITE.phoneHref} className="text-accent hover:underline">
+                  <a href={SITE.phoneHref} className="text-accent-ink hover:underline">
                     {SITE.phone}
                   </a>
                 </li>
@@ -40,7 +40,7 @@ export default function KvkkPage() {
                   E-posta:{" "}
                   <a
                     href={`mailto:${SITE.email}`}
-                    className="text-accent hover:underline"
+                    className="text-accent-ink hover:underline"
                   >
                     {SITE.email}
                   </a>
@@ -125,12 +125,12 @@ export default function KvkkPage() {
                 Başvurularınızı{" "}
                 <a
                   href={`mailto:${SITE.email}`}
-                  className="text-accent hover:underline"
+                  className="text-accent-ink hover:underline"
                 >
                   {SITE.email}
                 </a>{" "}
                 adresine veya{" "}
-                <Link href="/iletisim" className="text-accent hover:underline">
+                <Link href="/iletisim" className="text-accent-ink hover:underline">
                   iletişim formu
                 </Link>{" "}
                 üzerinden iletebilirsiniz.

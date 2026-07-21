@@ -75,12 +75,12 @@ export default function CookiePolicyPage() {
               Çerez politikası hakkında sorularınız için{" "}
               <a
                 href={`mailto:${SITE.email}`}
-                className="text-accent hover:underline"
+                className="text-accent-ink hover:underline"
               >
                 {SITE.email}
               </a>{" "}
               adresine yazabilir veya{" "}
-              <Link href="/kvkk" className="text-accent hover:underline">
+              <Link href="/kvkk" className="text-accent-ink hover:underline">
                 KVKK metnimizi
               </Link>{" "}
               inceleyebilirsiniz.

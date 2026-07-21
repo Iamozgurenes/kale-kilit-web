@@ -125,12 +125,16 @@ export default function Hero() {
                 aria-selected={i === index}
                 aria-label={`Slayt ${i + 1}`}
                 onClick={() => goTo(i)}
-                className={`h-2.5 rounded-full transition-all duration-300 ${
-                  i === index
-                    ? "w-10 bg-accent"
-                    : "w-2.5 bg-white/35 hover:bg-white/60"
-                }`}
-              />
+                className="group flex h-6 min-w-6 items-center justify-center"
+              >
+                <span
+                  className={`block h-2.5 rounded-full transition-all duration-300 ${
+                    i === index
+                      ? "w-10 bg-accent"
+                      : "w-2.5 bg-white/35 group-hover:bg-white/60"
+                  }`}
+                />
+              </button>
             ))}
           </div>
 

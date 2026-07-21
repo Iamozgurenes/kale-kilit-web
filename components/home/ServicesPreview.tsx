@@ -28,7 +28,7 @@ export default function ServicesPreview({
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mx-auto mb-14 max-w-2xl text-center">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent-ink">
             Adana Çilingir
           </p>
           <h2 className="text-3xl font-extrabold tracking-tight text-navy sm:text-4xl">

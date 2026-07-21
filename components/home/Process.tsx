@@ -57,7 +57,7 @@ export default function Process() {
                 <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-navy text-accent">
                   <step.icon className="h-5 w-5" />
                 </span>
-                <span className="text-sm font-bold tabular-nums text-accent">
+                <span className="text-sm font-bold tabular-nums text-accent-ink">
                   0{index + 1}
                 </span>
               </div>

@@ -6,6 +6,8 @@
   --navy: #0b1a33;
   --navy-light: #14274d;
   --accent: #f5a623;
+  /* Darker accent for text on light backgrounds — #f5a623 is ~2:1 against white, fails WCAG AA. */
+  --accent-ink: #b45309;
   --scrollbar-size: 10px;
   --scrollbar-track: #f1f3f7;
   --scrollbar-thumb: #c5ccd8;
@@ -18,6 +20,7 @@
   --color-navy: var(--navy);
   --color-navy-light: var(--navy-light);
   --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
   --font-sans: var(--font-poppins);
 }
 

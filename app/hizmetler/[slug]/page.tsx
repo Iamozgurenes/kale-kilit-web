@@ -88,7 +88,7 @@ export default async function ServiceDetailPage({ params }: Props) {
               Hizmet Hakkında
             </h2>
             <div
-              className="prose prose-neutral mt-5 max-w-none text-black/70 prose-headings:text-navy prose-a:text-accent prose-li:marker:text-accent"
+              className="prose prose-neutral mt-5 max-w-none text-black/70 prose-headings:text-navy prose-a:text-accent-ink prose-li:marker:text-accent-ink"
               dangerouslySetInnerHTML={{ __html: service.description }}
             />
 

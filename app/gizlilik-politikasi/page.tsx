@@ -26,7 +26,7 @@ export default function PrivacyPage() {
               Bu politika, {SITE.name} tarafından işletilen web sitesi ve ilgili
               dijital kanallar üzerinden toplanan bilgilere uygulanır. KVKK
               kapsamındaki ayrıntılı bilgilendirme için{" "}
-              <Link href="/kvkk" className="text-accent hover:underline">
+              <Link href="/kvkk" className="text-accent-ink hover:underline">
                 KVKK Aydınlatma Metni
               </Link>
               ’ni inceleyebilirsiniz.
@@ -82,12 +82,12 @@ export default function PrivacyPage() {
               Gizlilik politikamızla ilgili sorularınız için{" "}
               <a
                 href={`mailto:${SITE.email}`}
-                className="text-accent hover:underline"
+                className="text-accent-ink hover:underline"
               >
                 {SITE.email}
               </a>{" "}
               veya{" "}
-              <Link href="/iletisim" className="text-accent hover:underline">
+              <Link href="/iletisim" className="text-accent-ink hover:underline">
                 iletişim sayfası
               </Link>{" "}
               üzerinden bize ulaşabilirsiniz.

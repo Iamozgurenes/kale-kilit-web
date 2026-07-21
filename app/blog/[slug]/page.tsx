@@ -112,7 +112,7 @@ export default async function BlogDetailPage({ params }: Props) {
             )}
 
             <div
-              className="prose prose-neutral max-w-none text-black/70 prose-headings:text-navy prose-a:text-accent prose-li:marker:text-accent prose-img:rounded-xl"
+              className="prose prose-neutral max-w-none text-black/70 prose-headings:text-navy prose-a:text-accent-ink prose-li:marker:text-accent-ink prose-img:rounded-xl"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </div>
