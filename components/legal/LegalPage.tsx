@@ -35,7 +35,7 @@ export default function LegalPage({
 
       <section className="bg-white py-14 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <p className="mb-10 text-sm text-black/45">
+          <p className="mb-10 text-sm text-black/60">
             Son güncelleme: {updatedAt}
           </p>
 

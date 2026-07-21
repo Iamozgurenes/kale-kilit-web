@@ -70,7 +70,7 @@ export default function Footer() {
               <span className="text-base font-bold tracking-tight">
                 Kale Kilit
               </span>
-              <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-navy/40">
+              <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-navy/65">
                 Çilingir · 7/24
               </span>
             </span>
@@ -105,7 +105,7 @@ export default function Footer() {
         </div>
 
         <div className="lg:col-span-2">
-          <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+          <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
             Kurumsal
           </h3>
           <ul className="mt-4 space-y-2.5">
@@ -127,7 +127,7 @@ export default function Footer() {
         </div>
 
         <div className="lg:col-span-3">
-          <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+          <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
             Yasal
           </h3>
           <ul className="mt-4 space-y-2.5">
@@ -147,10 +147,10 @@ export default function Footer() {
 
       <div className="relative border-t border-white/10">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-6 text-center sm:flex-row sm:px-6 sm:text-left">
-          <p className="text-sm text-white/45">
+          <p className="text-sm text-white/65">
             © {new Date().getFullYear()} {SITE.name}. Tüm hakları saklıdır.
           </p>
-          <p className="text-xs text-white/35">
+          <p className="text-xs text-white/60">
             Adana · Çukurova · 7/24 Çilingir Hizmeti
           </p>
         </div>

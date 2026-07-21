@@ -55,7 +55,7 @@ export default function Error({
           </Button>
         </div>
 
-        <p className="mt-10 text-sm text-white/45">
+        <p className="mt-10 text-sm text-white/60">
           Sorun devam ederse{" "}
           <Link href="/iletisim" className="text-accent hover:underline">
             iletişim

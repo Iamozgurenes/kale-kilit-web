@@ -38,7 +38,7 @@ export default function Testimonials() {
               <footer className="mt-6">
                 <cite className="not-italic">
                   <span className="block font-bold text-navy">{item.name}</span>
-                  <span className="text-xs text-black/45">{item.role}</span>
+                  <span className="text-xs text-black/60">{item.role}</span>
                 </cite>
               </footer>
             </motion.blockquote>

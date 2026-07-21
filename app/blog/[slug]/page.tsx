@@ -153,11 +153,11 @@ export default async function BlogDetailPage({ params }: Props) {
               </div>
 
               <div className="rounded-2xl bg-neutral-50 p-5 ring-1 ring-black/5">
-                <p className="text-xs font-semibold uppercase tracking-wider text-navy/40">
+                <p className="text-xs font-semibold uppercase tracking-wider text-navy/65">
                   Kategori
                 </p>
                 <p className="mt-2 font-bold text-navy">{post.category}</p>
-                <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-navy/40">
+                <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-navy/65">
                   Yayın Tarihi
                 </p>
                 <p className="mt-2 text-sm text-black/60">{formattedDate}</p>

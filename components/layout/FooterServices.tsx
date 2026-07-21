@@ -47,7 +47,7 @@ export default function FooterServices() {
   if (services.length === 0) {
     return (
       <div>
-        <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+        <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
           Hizmetler
         </h3>
         <ul className="mt-4 space-y-2.5">
@@ -70,7 +70,7 @@ export default function FooterServices() {
 
   return (
     <div>
-      <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+      <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
         Hizmetler
       </h3>
 

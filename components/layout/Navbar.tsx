@@ -78,7 +78,7 @@ export default function Navbar() {
                   <span className="text-base font-bold tracking-tight">
                     Kale Kilit
                   </span>
-                  <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-navy/40">
+                  <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-navy/65">
                     Çilingir · 7/24
                   </span>
                 </span>
@@ -95,7 +95,7 @@ export default function Navbar() {
             </div>
 
             <div className="flex min-h-0 flex-1 flex-col overflow-y-auto px-4 py-8 sm:px-6">
-              <p className="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-navy/35">
+              <p className="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-navy/65">
                 Menü
               </p>
 
@@ -132,7 +132,7 @@ export default function Navbar() {
                           className={`text-sm font-medium transition ${
                             active
                               ? "text-accent"
-                              : "text-navy/20 group-hover:text-navy/40"
+                              : "text-navy/60 group-hover:text-navy/80"
                           }`}
                         >
                           0{i + 1}
@@ -156,7 +156,7 @@ export default function Navbar() {
                   <PhoneCall className="h-5 w-5" />
                   Acil Destek · {SITE.phone}
                 </a>
-                <p className="mt-4 text-center text-xs text-navy/40">
+                <p className="mt-4 text-center text-xs text-navy/65">
                   7/24 kesintisiz çilingir hizmeti
                 </p>
               </motion.div>
@@ -195,7 +195,7 @@ export default function Navbar() {
               <span className="truncate text-base font-bold tracking-tight sm:text-lg">
                 Kale Kilit
               </span>
-              <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-navy/40">
+              <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-navy/65">
                 Çilingir · 7/24
               </span>
             </span>
