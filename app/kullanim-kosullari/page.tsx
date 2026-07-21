@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import LegalPage from "@/components/legal/LegalPage";
 import { SITE } from "@/lib/constants";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Kullanım Koşulları | Kale Kilit & Çilingir",
+export const metadata = createPageMetadata({
+  title: "Kullanım Koşulları",
   description:
     "Kale Kilit & Çilingir web sitesi kullanım koşulları ve yasal bilgilendirme.",
-};
+  path: "/kullanim-kosullari",
+});
 
 export default function TermsPage() {
   return (

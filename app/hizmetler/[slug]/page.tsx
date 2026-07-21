@@ -7,6 +7,7 @@ import Button from "@/components/ui/Button";
 import { getServiceBySlug, getServices } from "@/lib/services";
 import { getServiceIcon } from "@/lib/icons";
 import { SITE } from "@/lib/constants";
+import { createPageMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -22,10 +23,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = await getServiceBySlug(slug).catch(() => null);
   if (!service) return { title: "Hizmet | Kale Kilit & Çilingir" };
 
-  return {
-    title: `${service.seoTitle || service.title} | Kale Kilit & Çilingir`,
+  return createPageMetadata({
+    title: service.seoTitle || service.title,
     description: service.seoDescription || service.shortDescription,
-  };
+    path: `/hizmetler/${slug}`,
+    image: service.coverImage || undefined,
+  });
 }
 
 export default async function ServiceDetailPage({ params }: Props) {

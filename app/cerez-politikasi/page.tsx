@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import LegalPage from "@/components/legal/LegalPage";
 import { SITE } from "@/lib/constants";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Çerez Politikası | Kale Kilit & Çilingir",
+export const metadata = createPageMetadata({
+  title: "Çerez Politikası",
   description:
     "Kale Kilit & Çilingir web sitesinde kullanılan çerezler ve tercihlerinizi yönetme hakkında bilgilendirme.",
-};
+  path: "/cerez-politikasi",
+});
 
 export default function CookiePolicyPage() {
   return (

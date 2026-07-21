@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import FloatingContact from "@/components/layout/FloatingContact";
 import CookieConsent from "@/components/layout/CookieConsent";
 import ScrollToTop from "@/components/layout/ScrollToTop";
+import JsonLd from "@/components/seo/JsonLd";
 import { SITE } from "@/lib/constants";
 import "./globals.css";
 
@@ -17,18 +18,70 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: "Kale Kilit & Çilingir | 7/24 Acil Çilingir Hizmeti",
+    default: "Kale Kilit & Çilingir | 7/24 Acil Çilingir Hizmeti Adana",
     template: "%s | Kale Kilit & Çilingir",
   },
   description:
     "Kapıda mı kaldınız? 15 dakikada oradayız. Adana’da ev, oto ve kasa çilingir hizmetlerinde 7/24 hızlı ve güvenilir çözüm.",
+  keywords: [
+    "Adana çilingir",
+    "acil çilingir",
+    "oto çilingir Adana",
+    "ev çilingiri",
+    "kasa açma",
+    "kilit değişimi",
+    "Kale Kilit",
+  ],
+  authors: [{ name: SITE.name }],
+  creator: SITE.name,
+  publisher: SITE.name,
+  applicationName: SITE.name,
+  category: "business",
+  alternates: {
+    canonical: SITE.url,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     type: "website",
     locale: "tr_TR",
+    url: SITE.url,
     siteName: SITE.name,
-    title: "Kale Kilit & Çilingir | 7/24 Acil Çilingir Hizmeti",
+    title: "Kale Kilit & Çilingir | 7/24 Acil Çilingir Hizmeti Adana",
     description:
-      "Adana genelinde 7/24 çilingir hizmeti. Ev, oto ve kasa çilingirliğinde hızlı çözüm.",
+      "Adana genelinde 7/24 çilingir hizmeti. Ev, oto ve kasa çilingirliğinde hızlı, hasarsız çözüm.",
+    images: [
+      {
+        url: "/genelog.png",
+        width: 1200,
+        height: 630,
+        alt: `${SITE.name} — 7/24 Çilingir`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kale Kilit & Çilingir | 7/24 Acil Çilingir",
+    description:
+      "Adana’da 7/24 acil çilingir. Ev, oto ve kasa hizmetleri.",
+    images: ["/genelog.png"],
+  },
+  icons: {
+    icon: [{ url: "/favicon.ico" }, { url: "/logoico.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/logoico.svg" }],
+  },
+  manifest: "/manifest.webmanifest",
+  other: {
+    "llms-txt": "/llms.txt",
   },
 };
 
@@ -40,6 +93,7 @@ export default function RootLayout({
   return (
     <html lang="tr" className={`${poppins.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-white text-foreground">
+        <JsonLd />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

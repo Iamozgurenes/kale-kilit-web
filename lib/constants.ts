@@ -9,7 +9,7 @@ export const SITE = {
   whatsappMessage: WHATSAPP_MESSAGE,
   email: "info@kalecilik.com",
   address: "Yurt, Kurttepe Cd. Unalır AP zemin KT. 8/C, 01360 Çukurova/Adana",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://kalekilit.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://kalekilitadana.com",
 };
 
 export const NAV_LINKS = [

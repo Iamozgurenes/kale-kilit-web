@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
   Clock3,
   Mail,
@@ -14,12 +13,14 @@ import Accordion from "@/components/ui/Accordion";
 import CTA from "@/components/home/CTA";
 import { SITE } from "@/lib/constants";
 import { FAQS } from "@/lib/data/faq";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "İletişim | Kale Kilit & Çilingir",
+export const metadata = createPageMetadata({
+  title: "İletişim",
   description:
     "Kale Kilit & Çilingir ile telefon, WhatsApp veya iletişim formu üzerinden hemen iletişime geçin. 7/24 acil çilingir hizmeti.",
-};
+  path: "/iletisim",
+});
 
 const CONTACT_ITEMS = [
   { icon: PhoneCall, label: "Telefon", value: SITE.phone, href: SITE.phoneHref },

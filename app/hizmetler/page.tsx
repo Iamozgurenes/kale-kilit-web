@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import { Clock3, Shield, Wallet } from "lucide-react";
 import PageHeader from "@/components/ui/PageHeader";
 import Process from "@/components/home/Process";
 import ServicesGallery from "@/components/services/ServicesGallery";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Hizmetlerimiz | Kale Kilit & Çilingir",
+export const metadata = createPageMetadata({
+  title: "Hizmetlerimiz",
   description:
     "Ev çilingiri, oto çilingir, kasa açma, kilit değişimi ve güvenlik sistemleri dahil tüm çilingirlik hizmetlerimiz.",
-};
+  path: "/hizmetler",
+});
 
 const HIGHLIGHTS = [
   {

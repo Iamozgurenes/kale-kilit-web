@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import { Building2, Clock3, MapPinned, Wrench } from "lucide-react";
 import PageHeader from "@/components/ui/PageHeader";
 import ProjectGallery from "@/components/projects/ProjectGallery";
 import CTA from "@/components/home/CTA";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Projelerimiz | Kale Kilit & Çilingir",
+export const metadata = createPageMetadata({
+  title: "Projelerimiz",
   description:
     "İstanbul genelinde tamamladığımız ev, oto, kasa çilingirliği ve güvenlik sistemi kurulum projelerinden örnekler.",
-};
+  path: "/projeler",
+});
 
 const HIGHLIGHTS = [
   {

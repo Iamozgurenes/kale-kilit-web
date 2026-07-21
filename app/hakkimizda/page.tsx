@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
   BadgeCheck,
   Eye,
@@ -14,12 +13,14 @@ import StatCard from "@/components/ui/StatCard";
 import Testimonials from "@/components/home/Testimonials";
 import Process from "@/components/home/Process";
 import CTA from "@/components/home/CTA";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Hakkımızda | Kale Kilit & Çilingir",
+export const metadata = createPageMetadata({
+  title: "Hakkımızda",
   description:
     "Kale Kilit & Çilingir'in hikayesi, misyonu ve vizyonu. 10 yılı aşkın tecrübeyle 7/24 güvenilir çilingir hizmeti.",
-};
+  path: "/hakkimizda",
+});
 
 const STATS = [
   { value: "10+", label: "Yıllık Tecrübe" },

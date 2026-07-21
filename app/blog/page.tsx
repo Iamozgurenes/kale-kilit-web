@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import { BookOpen, Lightbulb, ShieldCheck } from "lucide-react";
 import PageHeader from "@/components/ui/PageHeader";
 import BlogGallery from "@/components/blog/BlogGallery";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Blog | Kale Kilit & Çilingir",
+export const metadata = createPageMetadata({
+  title: "Blog",
   description:
     "Ev güvenliği, oto çilingirlik ve kilit sistemleri hakkında faydalı bilgiler ve öneriler.",
-};
+  path: "/blog",
+});
 
 const TOPICS = [
   {

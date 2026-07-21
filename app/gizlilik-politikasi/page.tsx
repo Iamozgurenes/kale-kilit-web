@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import LegalPage from "@/components/legal/LegalPage";
 import { SITE } from "@/lib/constants";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Gizlilik Politikası | Kale Kilit & Çilingir",
+export const metadata = createPageMetadata({
+  title: "Gizlilik Politikası",
   description:
     "Kale Kilit & Çilingir web sitesi gizlilik politikası ve kişisel verilerin korunmasına ilişkin bilgilendirme.",
-};
+  path: "/gizlilik-politikasi",
+});
 
 export default function PrivacyPage() {
   return (

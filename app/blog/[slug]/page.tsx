@@ -7,6 +7,7 @@ import Button from "@/components/ui/Button";
 import { getPostBySlug, getPosts } from "@/lib/posts";
 import { SITE } from "@/lib/constants";
 import BlogCard from "@/components/ui/BlogCard";
+import { createPageMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -22,10 +23,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPostBySlug(slug).catch(() => null);
   if (!post) return { title: "Blog | Kale Kilit & Çilingir" };
 
-  return {
-    title: `${post.seoTitle || post.title} | Kale Kilit & Çilingir`,
+  return createPageMetadata({
+    title: post.seoTitle || post.title,
     description: post.seoDescription || post.excerpt,
-  };
+    path: `/blog/${slug}`,
+    image: post.coverImage || undefined,
+    type: "article",
+  });
 }
 
 export default async function BlogDetailPage({ params }: Props) {

@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import LegalPage from "@/components/legal/LegalPage";
 import { SITE } from "@/lib/constants";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "KVKK Aydınlatma Metni | Kale Kilit & Çilingir",
+export const metadata = createPageMetadata({
+  title: "KVKK Aydınlatma Metni",
   description:
     "6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında Kale Kilit & Çilingir aydınlatma metni.",
-};
+  path: "/kvkk",
+});
 
 export default function KvkkPage() {
   return (

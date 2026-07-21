@@ -1,27 +1,43 @@
 import type { MetadataRoute } from "next";
 import { SITE } from "@/lib/constants";
+import { getPosts } from "@/lib/posts";
+import { getServices } from "@/lib/services";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = SITE.url.replace(/\/$/, "");
 
-  const routes = [
-    "",
-    "/hakkimizda",
-    "/hizmetler",
-    "/projeler",
-    "/blog",
-    "/sss",
-    "/iletisim",
-    "/kvkk",
-    "/gizlilik-politikasi",
-    "/cerez-politikasi",
-    "/kullanim-kosullari",
+  const staticRoutes: MetadataRoute.Sitemap = [
+    { url: base, lastModified: new Date(), changeFrequency: "daily", priority: 1 },
+    { url: `${base}/hakkimizda`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/hizmetler`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/projeler`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
+    { url: `${base}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
+    { url: `${base}/sss`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
+    { url: `${base}/iletisim`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/kvkk`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
+    { url: `${base}/gizlilik-politikasi`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
+    { url: `${base}/cerez-politikasi`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
+    { url: `${base}/kullanim-kosullari`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
   ];
 
-  return routes.map((path) => ({
-    url: `${base}${path}`,
+  const [services, posts] = await Promise.all([
+    getServices().catch(() => []),
+    getPosts().catch(() => []),
+  ]);
+
+  const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({
+    url: `${base}/hizmetler/${service.slug}`,
     lastModified: new Date(),
-    changeFrequency: path === "" ? "daily" : "weekly",
-    priority: path === "" ? 1 : 0.7,
+    changeFrequency: "weekly",
+    priority: 0.85,
   }));
+
+  const postRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${base}/blog/${post.slug}`,
+    lastModified: new Date(post.publishedAt),
+    changeFrequency: "monthly",
+    priority: 0.65,
+  }));
+
+  return [...staticRoutes, ...serviceRoutes, ...postRoutes];
 }

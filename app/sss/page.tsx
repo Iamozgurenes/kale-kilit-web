@@ -1,16 +1,17 @@
-import type { Metadata } from "next";
 import { HelpCircle, MessageCircle, PhoneCall } from "lucide-react";
 import PageHeader from "@/components/ui/PageHeader";
 import Button from "@/components/ui/Button";
 import FaqSections from "@/components/faq/FaqSections";
 import CTA from "@/components/home/CTA";
 import { SITE } from "@/lib/constants";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Sıkça Sorulan Sorular | Kale Kilit & Çilingir",
+export const metadata = createPageMetadata({
+  title: "Sıkça Sorulan Sorular",
   description:
     "Çilingirlik hizmetlerimiz, ulaşım süremiz, fiyatlandırma ve daha fazlası hakkında merak edilenler.",
-};
+  path: "/sss",
+});
 
 export default function FaqPage() {
   return (
