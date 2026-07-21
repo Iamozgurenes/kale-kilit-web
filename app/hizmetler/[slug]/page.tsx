@@ -60,7 +60,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           </Link>
 
           <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-accent/15 text-accent ring-1 ring-inset ring-accent/30">
-            <Icon className="h-6 w-6" />
+            <Image src={`/icons/${service.icon}.svg`} alt={service.title} width={48} height={48} className="w-full h-full object-contain" />
           </div>
 
           <h1 className="max-w-3xl text-3xl font-extrabold text-white sm:text-5xl">
