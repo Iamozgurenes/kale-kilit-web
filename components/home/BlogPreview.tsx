@@ -5,10 +5,10 @@ import { ArrowRight } from "lucide-react";
 import BlogCard from "@/components/ui/BlogCard";
 import Button from "@/components/ui/Button";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
-import { BLOG_POSTS } from "@/lib/data/blog";
+import type { Post } from "@/lib/types/content";
 
-export default function BlogPreview() {
-  const featured = BLOG_POSTS.slice(0, 3);
+export default function BlogPreview({ posts }: { posts: Post[] }) {
+  const featured = posts.slice(0, 3);
 
   return (
     <section className="bg-neutral-50 py-20 sm:py-28">
@@ -32,19 +32,30 @@ export default function BlogPreview() {
           </Button>
         </div>
 
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 gap-6 md:grid-cols-3"
-        >
-          {featured.map((post) => (
-            <motion.div key={post.title} variants={fadeInUp}>
-              <BlogCard {...post} />
-            </motion.div>
-          ))}
-        </motion.div>
+        {featured.length === 0 ? (
+          <p className="text-sm text-black/50">Henüz yayınlanmış yazı yok.</p>
+        ) : (
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="grid grid-cols-1 gap-6 md:grid-cols-3"
+          >
+            {featured.map((post) => (
+              <motion.div key={post.id} variants={fadeInUp} className="h-full">
+                <BlogCard
+                  title={post.title}
+                  date={post.publishedAt}
+                  category={post.category}
+                  excerpt={post.excerpt}
+                  href={`/blog/${post.slug}`}
+                  coverImage={post.coverImage}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
       </div>
     </section>
   );

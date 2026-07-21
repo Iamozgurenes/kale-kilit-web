@@ -4,6 +4,8 @@ import PageHeader from "@/components/ui/PageHeader";
 import BlogGallery from "@/components/blog/BlogGallery";
 import CTA from "@/components/home/CTA";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Blog | Kale Kilit & Çilingir",
   description:
@@ -44,7 +46,7 @@ export default function BlogPage() {
               key={topic.title}
               className="rounded-2xl bg-white p-6 ring-1 ring-black/5"
             >
-              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-navy/10 text-navy">
+              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-accent/15 text-accent">
                 <topic.icon className="h-5 w-5" />
               </div>
               <h2 className="font-bold text-navy">{topic.title}</h2>
