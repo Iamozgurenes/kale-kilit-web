@@ -5,13 +5,11 @@ import { ArrowRight, Clock3, PhoneCall, Shield, Wallet } from "lucide-react";
 import PageHeader from "@/components/ui/PageHeader";
 import Button from "@/components/ui/Button";
 import Process from "@/components/home/Process";
-import CTA from "@/components/home/CTA";
 import { getServices } from "@/lib/services";
 import { getServiceIcon } from "@/lib/icons";
 import { SITE } from "@/lib/constants";
 
-export const dynamic = "force-dynamic";
-
+export const runtime = 'edge';
 export const metadata: Metadata = {
   title: "Hizmetlerimiz | Kale Kilit & Çilingir",
   description:

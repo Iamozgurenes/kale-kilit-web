@@ -4,12 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, PhoneCall } from "lucide-react";
 import Button from "@/components/ui/Button";
-import CTA from "@/components/home/CTA";
 import { getServiceBySlug, getServices } from "@/lib/services";
 import { getServiceIcon } from "@/lib/icons";
 import { SITE } from "@/lib/constants";
 
-export const dynamic = "force-dynamic";
+export const runtime = 'edge';
 
 type Props = { params: Promise<{ slug: string }> };
 

@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { getPostBySlug } from "@/lib/posts";
 
-export const dynamic = "force-dynamic";
+export const runtime = 'edge';
+
 
 type Params = { params: Promise<{ slug: string }> };
 

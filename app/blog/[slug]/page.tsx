@@ -4,12 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CalendarDays, PhoneCall, Tag } from "lucide-react";
 import Button from "@/components/ui/Button";
-import CTA from "@/components/home/CTA";
 import { getPostBySlug, getPosts } from "@/lib/posts";
 import { SITE } from "@/lib/constants";
 import BlogCard from "@/components/ui/BlogCard";
 
-export const dynamic = "force-dynamic";
+export const runtime = 'edge';
 
 type Props = { params: Promise<{ slug: string }> };
 

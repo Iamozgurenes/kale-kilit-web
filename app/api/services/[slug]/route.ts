@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import { getServiceBySlug } from "@/lib/services";
 
-export const dynamic = "force-dynamic";
 
+export const runtime = 'edge';
 type Params = { params: Promise<{ slug: string }> };
 
 export async function GET(_request: Request, { params }: Params) {
