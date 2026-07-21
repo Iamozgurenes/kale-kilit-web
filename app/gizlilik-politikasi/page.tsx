@@ -17,6 +17,7 @@ export default function PrivacyPage() {
       title="Gizlilik Politikası"
       description="Web sitemizi ziyaret ettiğinizde ve hizmetlerimizden yararlandığınızda gizliliğinizi nasıl koruduğumuzu açıklıyoruz."
       updatedAt="21 Temmuz 2026"
+      path="/gizlilik-politikasi"
       sections={[
         {
           title: "1. Kapsam",

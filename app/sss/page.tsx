@@ -20,6 +20,7 @@ export default function FaqPage() {
         eyebrow="SSS"
         title="Sıkça Sorulan Sorular"
         description="Hizmetlerimiz hakkında en çok merak edilen soruları sizin için yanıtladık."
+        path="/sss"
       />
 
       <section className="bg-neutral-50 py-16 sm:py-24">

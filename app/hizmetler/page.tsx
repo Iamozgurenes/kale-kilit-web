@@ -36,6 +36,7 @@ export default function ServicesPage() {
         eyebrow="Hizmetlerimiz"
         title="İhtiyacınız Olan Her Çilingirlik Hizmeti"
         description="Ev, oto ve kasa çilingirliğinden modern güvenlik sistemlerine kadar geniş hizmet yelpazemizle yanınızdayız."
+        path="/hizmetler"
       />
 
       <section className="bg-neutral-50 py-12 sm:py-16">

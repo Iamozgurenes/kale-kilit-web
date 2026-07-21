@@ -16,14 +16,27 @@ export default function ServicesPreview({
   const featured = services.slice(0, 4);
 
   return (
-    <section className="bg-white py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="mx-auto mb-12 max-w-2xl text-center">
-          <h2 className="text-3xl font-extrabold text-navy sm:text-4xl">
+    <section className="relative overflow-hidden bg-neutral-50 py-20 sm:py-28">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-24 top-10 h-72 w-72 rounded-full bg-accent/10 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-navy/5 blur-3xl"
+      />
+
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="mx-auto mb-14 max-w-2xl text-center">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+            Adana Çilingir
+          </p>
+          <h2 className="text-3xl font-extrabold tracking-tight text-navy sm:text-4xl">
             Hizmetlerimiz
           </h2>
           <p className="mt-4 text-black/60">
-            İhtiyacınız olan her çilingirlik hizmeti tek çatı altında.
+            Ev, oto ve kasa ihtiyaçlarınız için hızlı, hasarsız ve güvenilir
+            çözümler.
           </p>
         </div>
 
@@ -36,10 +49,10 @@ export default function ServicesPreview({
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
+            viewport={{ once: true, amount: 0.2 }}
+            className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4"
           >
-            {featured.map((service) => (
+            {featured.map((service, index) => (
               <ServiceCard
                 key={service.id}
                 icon={getServiceIcon(service.icon)}
@@ -47,6 +60,7 @@ export default function ServicesPreview({
                 description={service.shortDescription}
                 href={`/hizmetler/${service.slug}`}
                 coverImage={service.coverImage}
+                index={index}
               />
             ))}
           </motion.div>
@@ -56,7 +70,7 @@ export default function ServicesPreview({
           <Button
             href="/hizmetler"
             variant="secondary"
-            className="bg-navy/5! text-navy! ring-navy/20! hover:bg-navy/10!"
+            className="bg-white! text-navy! ring-navy/10! hover:bg-navy! hover:text-white! hover:ring-navy!"
           >
             Tüm Hizmetleri Gör
             <ArrowRight className="h-5 w-5" />

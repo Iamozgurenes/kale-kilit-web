@@ -35,6 +35,7 @@ export default function BlogPage() {
         eyebrow="Blog"
         title="Güvenlik ve Çilingirlik Rehberi"
         description="Ev, araç ve iş yeri güvenliğinizi artırmanıza yardımcı olacak pratik bilgiler paylaşıyoruz."
+        path="/blog"
       />
 
       <section className="bg-neutral-50 py-12 sm:py-16">

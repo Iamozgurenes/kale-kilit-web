@@ -17,6 +17,7 @@ export default function KvkkPage() {
       title="KVKK Aydınlatma Metni"
       description="6698 sayılı Kişisel Verilerin Korunması Kanunu uyarınca kişisel verilerinizin işlenmesine ilişkin bilgilendirme."
       updatedAt="21 Temmuz 2026"
+      path="/kvkk"
       sections={[
         {
           title: "1. Veri Sorumlusu",

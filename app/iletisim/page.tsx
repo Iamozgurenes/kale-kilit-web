@@ -37,6 +37,7 @@ export default function ContactPage() {
         eyebrow="İletişim"
         title="Bize Ulaşın"
         description="Acil durumlar için hemen arayın, diğer talepleriniz için formu doldurun."
+        path="/iletisim"
       />
 
       <section className="bg-accent py-5">

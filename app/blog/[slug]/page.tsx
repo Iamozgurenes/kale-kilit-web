@@ -8,6 +8,7 @@ import { getPostBySlug, getPosts } from "@/lib/posts";
 import { SITE } from "@/lib/constants";
 import BlogCard from "@/components/ui/BlogCard";
 import { createPageMetadata } from "@/lib/seo";
+import { getBannerImage } from "@/lib/banner";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -53,21 +54,20 @@ export default async function BlogDetailPage({ params }: Props) {
 
   return (
     <>
-      <section className="relative min-h-[320px] overflow-hidden bg-navy sm:min-h-[420px]">
-        {post.coverImage ? (
-          <Image
-            src={post.coverImage}
-            alt={post.title}
-            fill
-            priority
-            className="object-cover"
-            sizes="100vw"
-          />
-        ) : null}
-        <div className="absolute inset-0 bg-linear-to-r from-navy via-navy/85 to-navy/45" />
-        <div className="absolute inset-0 bg-linear-to-t from-navy/85 via-transparent to-navy/35" />
+      <section className="relative overflow-hidden bg-navy py-16 sm:py-24">
+        <Image
+          src={getBannerImage("/blog/[slug]")}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+          aria-hidden
+        />
+        <div className="absolute inset-0 bg-linear-to-r from-navy via-navy/80 to-navy/40" />
+        <div className="absolute inset-0 bg-linear-to-t from-navy/90 via-transparent to-navy/45" />
 
-        <div className="relative mx-auto flex min-h-[320px] max-w-6xl flex-col justify-end px-4 py-12 sm:min-h-[420px] sm:px-6 sm:py-16">
+        <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
           <Link
             href="/blog"
             className="mb-6 inline-flex w-fit items-center gap-2 text-sm font-medium text-white/70 transition hover:text-accent"
@@ -90,7 +90,7 @@ export default async function BlogDetailPage({ params }: Props) {
           <h1 className="max-w-3xl text-3xl font-extrabold leading-tight text-white sm:text-5xl">
             {post.title}
           </h1>
-          <p className="mt-4 max-w-2xl text-base text-white/75 sm:text-lg">
+          <p className="mt-4 max-w-2xl text-base text-white/70 sm:text-lg">
             {post.excerpt}
           </p>
         </div>

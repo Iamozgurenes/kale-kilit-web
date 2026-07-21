@@ -17,6 +17,7 @@ export default function TermsPage() {
       title="Kullanım Koşulları"
       description="Web sitemizi kullanarak aşağıdaki koşulları kabul etmiş sayılırsınız."
       updatedAt="21 Temmuz 2026"
+      path="/kullanim-kosullari"
       sections={[
         {
           title: "1. Genel",

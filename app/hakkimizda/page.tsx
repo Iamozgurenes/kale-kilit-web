@@ -103,6 +103,7 @@ export default function AboutPage() {
         eyebrow="Hakkımızda"
         title="Güvenliğiniz İçin Yola Çıktık"
         description="2015 yılından bu yana Adana genelinde ev, oto ve kasa çilingirliği alanında binlerce müşteriye hızlı ve güvenilir çözümler sunuyoruz."
+        path="/hakkimizda"
       />
 
       <section className="bg-white py-16 sm:py-24">

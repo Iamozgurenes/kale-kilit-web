@@ -41,6 +41,7 @@ export default function ProjectsPage() {
         eyebrow="Projelerimiz"
         title="Tamamladığımız İşlerden Örnekler"
         description="Ev, iş yeri ve site projelerinde gerçekleştirdiğimiz çilingirlik ve güvenlik sistemi kurulumlarından bazı örnekler."
+        path="/projeler"
       />
 
       <section className="bg-navy py-12">

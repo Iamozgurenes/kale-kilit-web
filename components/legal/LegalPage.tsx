@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import PageHeader from "@/components/ui/PageHeader";
+import type { BannerPath } from "@/lib/banner";
 
 type LegalSection = {
   title: string;
@@ -12,6 +13,7 @@ type LegalPageProps = {
   description: string;
   updatedAt: string;
   sections: LegalSection[];
+  path: BannerPath;
 };
 
 export default function LegalPage({
@@ -20,10 +22,16 @@ export default function LegalPage({
   description,
   updatedAt,
   sections,
+  path,
 }: LegalPageProps) {
   return (
     <>
-      <PageHeader eyebrow={eyebrow} title={title} description={description} />
+      <PageHeader
+        eyebrow={eyebrow}
+        title={title}
+        description={description}
+        path={path}
+      />
 
       <section className="bg-white py-14 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">

@@ -17,6 +17,7 @@ export default function CookiePolicyPage() {
       title="Çerez Politikası"
       description="Sitemizde kullanılan çerez türleri, amaçları ve yönetimine ilişkin bilgilendirme."
       updatedAt="21 Temmuz 2026"
+      path="/cerez-politikasi"
       sections={[
         {
           title: "1. Çerez Nedir?",
