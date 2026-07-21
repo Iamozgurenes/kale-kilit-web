@@ -19,7 +19,7 @@ export default function ProjectsPreview() {
               Son Projelerimiz
             </h2>
             <p className="mt-4 text-black/60">
-              İstanbul genelinde tamamladığımız bazı işlerden örnekler.
+              Adana genelinde tamamladığımız bazı işlerden örnekler.
             </p>
           </div>
           <Button

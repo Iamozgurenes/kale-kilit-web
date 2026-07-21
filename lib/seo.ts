@@ -90,7 +90,8 @@ export function getSiteJsonLd() {
     },
     geo: {
       "@type": "GeoCoordinates",
-      addressCountry: "TR",
+      latitude: SITE.geo.lat,
+      longitude: SITE.geo.lng,
     },
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",

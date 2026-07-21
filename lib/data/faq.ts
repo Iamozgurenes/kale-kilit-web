@@ -21,7 +21,7 @@ export const FAQS: FaqItem[] = [
     category: "Hizmet",
     question: "Hangi bölgelere hizmet veriyorsunuz?",
     answer:
-      "İstanbul Anadolu ve Avrupa yakasının büyük bölümüne hizmet veriyoruz. Çağrı sırasında bulunduğunuz konuma göre en yakın ekibi yönlendiriyoruz.",
+      "Adana genelinde (Çukurova, Seyhan, Yüreğir, Sarıçam ve çevre ilçeler) hizmet veriyoruz. Çağrı sırasında bulunduğunuz konuma göre en yakın ekibi yönlendiriyoruz.",
   },
   {
     category: "Teknik",

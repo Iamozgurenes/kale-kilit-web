@@ -10,8 +10,7 @@ import PageHeader from "@/components/ui/PageHeader";
 import Button from "@/components/ui/Button";
 import ContactForm from "@/components/ContactForm";
 import Accordion from "@/components/ui/Accordion";
-import CTA from "@/components/home/CTA";
-import { SITE } from "@/lib/constants";
+import { SITE, SERVICE_AREAS } from "@/lib/constants";
 import { FAQS } from "@/lib/data/faq";
 import { createPageMetadata } from "@/lib/seo";
 
@@ -29,20 +28,7 @@ const CONTACT_ITEMS = [
   { icon: Clock3, label: "Çalışma Saatleri", value: "7/24 Kesintisiz Hizmet" },
 ];
 
-const SERVICE_AREAS = [
-  "Kadıköy",
-  "Ataşehir",
-  "Üsküdar",
-  "Maltepe",
-  "Kartal",
-  "Pendik",
-  "Şişli",
-  "Beşiktaş",
-  "Bakırköy",
-  "Levent",
-  "Sarıyer",
-  "Beykoz",
-];
+const MAP_EMBED_SRC = `https://maps.google.com/maps?q=${SITE.geo.lat},${SITE.geo.lng}&z=16&output=embed`;
 
 export default function ContactPage() {
   return (
@@ -140,8 +126,7 @@ export default function ContactPage() {
               Hizmet Bölgelerimiz
             </h2>
             <p className="mt-3 text-black/60">
-              İstanbul Anadolu ve Avrupa yakasında geniş bir alanda hizmet
-              veriyoruz.
+              Adana merkez ve çevre ilçelerde geniş bir alanda hizmet veriyoruz.
             </p>
           </div>
           <ul className="flex flex-wrap gap-2">
@@ -179,21 +164,32 @@ export default function ContactPage() {
       <section className="bg-navy py-14">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="overflow-hidden rounded-2xl ring-1 ring-white/10">
-            <div className="flex min-h-[220px] flex-col items-center justify-center bg-navy-light px-6 py-12 text-center">
-              <MapPin className="h-8 w-8 text-accent" />
-              <p className="mt-4 text-lg font-bold text-white">Harita Konumu</p>
-              <p className="mt-2 max-w-md text-sm text-white/60">
-                {SITE.address}
-              </p>
-              <p className="mt-4 text-xs text-white/40">
-                Gerçek harita entegrasyonu için Google Maps embed eklenebilir.
-              </p>
+            <iframe
+              title="Kale Kilit & Çilingir konum haritası"
+              src={MAP_EMBED_SRC}
+              className="h-[280px] w-full border-0 sm:h-[360px]"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+            <div className="flex items-start gap-3 bg-navy-light px-5 py-4">
+              <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+              <div>
+                <p className="text-sm font-semibold text-white">Adresimiz</p>
+                <p className="mt-1 text-sm text-white/70">{SITE.address}</p>
+                <a
+                  href={`https://www.google.com/maps?q=${SITE.geo.lat},${SITE.geo.lng}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-block text-sm font-medium text-accent hover:underline"
+                >
+                  Google Maps’te aç
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* <CTA /> */}
     </>
   );
 }

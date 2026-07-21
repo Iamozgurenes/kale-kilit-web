@@ -67,7 +67,7 @@ const TIMELINE = [
     year: "2018",
     title: "Ekip Genişlemesi",
     description:
-      "Anadolu ve Avrupa yakasında eş zamanlı müdahale için saha ekibimizi büyüttük.",
+      "Çukurova ve çevre ilçelerde eş zamanlı müdahale için saha ekibimizi büyüttük.",
   },
   {
     year: "2021",
@@ -79,21 +79,21 @@ const TIMELINE = [
     year: "2026",
     title: "Bugün",
     description:
-      "8.500+ tamamlanan işlem ve 7/24 kesintisiz hizmetle İstanbul genelinde yanınızdayız.",
+      "8.500+ tamamlanan işlem ve 7/24 kesintisiz hizmetle Adana genelinde yanınızdayız.",
   },
 ];
 
 const AREAS = [
-  "Kadıköy",
-  "Ataşehir",
-  "Üsküdar",
-  "Maltepe",
-  "Kartal",
-  "Şişli",
-  "Beşiktaş",
-  "Bakırköy",
-  "Levent",
-  "Beykoz",
+  "Çukurova",
+  "Seyhan",
+  "Yüreğir",
+  "Sarıçam",
+  "Karaisalı",
+  "Ceyhan",
+  "Kozan",
+  "İmamoğlu",
+  "Pozantı",
+  "Karataş",
 ];
 
 export default function AboutPage() {
@@ -102,7 +102,7 @@ export default function AboutPage() {
       <PageHeader
         eyebrow="Hakkımızda"
         title="Güvenliğiniz İçin Yola Çıktık"
-        description="2015 yılından bu yana İstanbul genelinde ev, oto ve kasa çilingirliği alanında binlerce müşteriye hızlı ve güvenilir çözümler sunuyoruz."
+        description="2015 yılından bu yana Adana genelinde ev, oto ve kasa çilingirliği alanında binlerce müşteriye hızlı ve güvenilir çözümler sunuyoruz."
       />
 
       <section className="bg-white py-16 sm:py-24">
@@ -113,7 +113,7 @@ export default function AboutPage() {
             </h2>
             <p className="mt-4 leading-relaxed text-black/60">
               Kale Kilit & Çilingir, küçük bir çilingir atölyesi olarak başladığı
-              yolculuğunda bugün İstanbul&apos;un dört bir yanına ulaşan, onlarca
+              yolculuğunda bugün Adana&apos;nın dört bir yanına ulaşan, onlarca
               uzman çilingirden oluşan bir ekibe dönüştü. Kapıda kalan bir
               ailenin gece yarısı yaşadığı çaresizliği görerek yola çıktık ve o
               günden beri tek bir hedefimiz oldu: İnsanların en çaresiz anında
@@ -152,7 +152,7 @@ export default function AboutPage() {
             </div>
             <h2 className="text-xl font-extrabold text-navy">Vizyonumuz</h2>
             <p className="mt-3 text-sm leading-relaxed text-black/60">
-              İstanbul&apos;un en güvenilir çilingir ve güvenlik sistemleri
+              Adana&apos;nın en güvenilir çilingir ve güvenlik sistemleri
               markası olmak; her çağrıda aynı kaliteyi standartlaştırmak.
             </p>
           </div>
