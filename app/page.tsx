@@ -1,35 +1,23 @@
 import Hero from "@/components/home/Hero";
 import Features from "@/components/home/Features";
-import ServicesPreview from "@/components/home/ServicesPreview";
 import Stats from "@/components/home/Stats";
 import Process from "@/components/home/Process";
 import ProjectsPreview from "@/components/home/ProjectsPreview";
 import Testimonials from "@/components/home/Testimonials";
 import FaqPreview from "@/components/home/FaqPreview";
-import BlogPreview from "@/components/home/BlogPreview";
-import { getServices } from "@/lib/services";
-import { getPosts } from "@/lib/posts";
+import HomeDynamicSections from "@/components/home/HomeDynamicSections";
 
-export const runtime = "edge";
-
-export default async function Home() {
-  const [services, posts] = await Promise.all([
-    getServices({ limit: 4 }).catch(() => []),
-    getPosts({ limit: 3 }).catch(() => []),
-  ]);
-
+export default function Home() {
   return (
     <>
       <Hero />
       <Features />
-      <ServicesPreview services={services} />
+      <HomeDynamicSections />
       <Stats />
       <Process />
       <ProjectsPreview />
       <Testimonials />
       <FaqPreview />
-      <BlogPreview posts={posts} />
-      {/* <CTA /> */}
     </>
   );
 }

@@ -8,9 +8,14 @@ import { getPostBySlug, getPosts } from "@/lib/posts";
 import { SITE } from "@/lib/constants";
 import BlogCard from "@/components/ui/BlogCard";
 
-export const runtime = 'edge';
-
 type Props = { params: Promise<{ slug: string }> };
+
+export async function generateStaticParams() {
+  const posts = await getPosts().catch(() => []);
+  return posts.map((post) => ({ slug: post.slug }));
+}
+
+export const dynamicParams = false;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { BookOpen, Lightbulb, ShieldCheck } from "lucide-react";
 import PageHeader from "@/components/ui/PageHeader";
 import BlogGallery from "@/components/blog/BlogGallery";
-export const runtime = 'edge';
+
 export const metadata: Metadata = {
   title: "Blog | Kale Kilit & Çilingir",
   description:

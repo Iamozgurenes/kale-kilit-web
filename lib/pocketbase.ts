@@ -5,7 +5,9 @@ const POCKETBASE_URL =
 
 /** Server-only PocketBase client (API routes / Server Components). */
 export function createPocketBase() {
-  return new PocketBase(POCKETBASE_URL);
+  const pb = new PocketBase(POCKETBASE_URL);
+  pb.autoCancellation(false);
+  return pb;
 }
 
 export function getPocketBaseUrl() {

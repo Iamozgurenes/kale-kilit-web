@@ -8,9 +8,14 @@ import { getServiceBySlug, getServices } from "@/lib/services";
 import { getServiceIcon } from "@/lib/icons";
 import { SITE } from "@/lib/constants";
 
-export const runtime = 'edge';
-
 type Props = { params: Promise<{ slug: string }> };
+
+export async function generateStaticParams() {
+  const services = await getServices().catch(() => []);
+  return services.map((service) => ({ slug: service.slug }));
+}
+
+export const dynamicParams = false;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;

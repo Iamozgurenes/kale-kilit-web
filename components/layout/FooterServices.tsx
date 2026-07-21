@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, ChevronDown } from "lucide-react";
+import { apiGet } from "@/lib/api-client";
+import type { Service } from "@/lib/types/content";
 
 type FooterServiceItem = {
   id: string;
@@ -13,21 +15,41 @@ type FooterServiceItem = {
 
 const VISIBLE_COUNT = 8;
 
-export default function FooterServices({
-  services,
-}: {
-  services: FooterServiceItem[];
-}) {
+export default function FooterServices() {
+  const [services, setServices] = useState<FooterServiceItem[]>([]);
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function load() {
+      try {
+        const data = await apiGet<{ items: Service[] }>("/api/services?limit=100");
+        if (cancelled) return;
+        setServices(
+          data.items.map((service) => ({
+            id: service.id,
+            title: service.title,
+            slug: service.slug,
+          })),
+        );
+      } catch {
+        if (!cancelled) setServices([]);
+      }
+    }
+
+    void load();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   if (services.length === 0) {
     return (
       <div>
-        <div className="flex items-center justify-between gap-3">
-          <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
-            Hizmetler
-          </h3>
-        </div>
+        <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+          Hizmetler
+        </h3>
         <ul className="mt-4 space-y-2.5">
           <li>
             <Link
