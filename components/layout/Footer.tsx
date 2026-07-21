@@ -1,20 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
-import {
-  ArrowUpRight,
-  Mail,
-  MapPin,
-  MessageCircle,
-  PhoneCall,
-} from "lucide-react";
+import { Mail, MapPin, MessageCircle, PhoneCall } from "lucide-react";
 import { LEGAL_LINKS } from "@/lib/data/legal";
 import { NAV_LINKS, SITE } from "@/lib/constants";
 import { getServices } from "@/lib/services";
+import FooterServices from "@/components/layout/FooterServices";
 
 const FOOTER_NAV = NAV_LINKS.filter((link) => link.href !== "/");
 
 export default async function Footer() {
-  const services = await getServices({ limit: 8 }).catch(() => []);
+  const services = await getServices({ limit: 100 }).catch(() => []);
 
   return (
     <footer className="relative overflow-hidden bg-navy text-white">
@@ -131,42 +126,13 @@ export default async function Footer() {
         </div>
 
         <div className="lg:col-span-3">
-          <div className="flex items-center justify-between gap-3">
-            <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
-              Hizmetler
-            </h3>
-            <Link
-              href="/hizmetler"
-              className="inline-flex items-center gap-1 text-xs font-semibold text-accent transition hover:text-accent/80"
-            >
-              Tümü
-              <ArrowUpRight className="h-3.5 w-3.5" />
-            </Link>
-          </div>
-          <ul className="mt-4 space-y-2.5">
-            {services.length === 0 ? (
-              <li>
-                <Link
-                  href="/hizmetler"
-                  className="text-sm text-white/65 transition hover:text-accent"
-                >
-                  Tüm hizmetleri gör
-                </Link>
-              </li>
-            ) : (
-              services.map((service) => (
-                <li key={service.id}>
-                  <Link
-                    href={`/hizmetler/${service.slug}`}
-                    className="group inline-flex max-w-full items-center gap-1 text-sm text-white/65 transition hover:text-accent"
-                  >
-                    <span className="truncate">{service.title}</span>
-                    <ArrowUpRight className="h-3.5 w-3.5 shrink-0 opacity-0 transition group-hover:opacity-100" />
-                  </Link>
-                </li>
-              ))
-            )}
-          </ul>
+          <FooterServices
+            services={services.map((service) => ({
+              id: service.id,
+              title: service.title,
+              slug: service.slug,
+            }))}
+          />
         </div>
 
         <div className="lg:col-span-3">
