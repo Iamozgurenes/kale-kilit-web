@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight, type LucideIcon } from "lucide-react";
 import { fadeInUp } from "@/lib/animations";
@@ -26,10 +27,12 @@ export default function ServiceCard({
     <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl bg-white ring-1 ring-black/5 transition duration-300 hover:-translate-y-1.5 hover:ring-accent/50 hover:shadow-[0_20px_40px_-24px_rgba(11,26,51,0.35)]">
       <div className="relative isolate aspect-[16/10] w-full overflow-hidden bg-neutral-200">
         {coverImage ? (
-          <img
+          <Image
             src={coverImage}
             alt={title}
-            className="absolute inset-0 h-full w-full object-cover object-center transition duration-700 ease-out group-hover:scale-110"
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            className="object-cover object-center transition duration-700 ease-out group-hover:scale-110"
           />
         ) : (
           <div className="absolute inset-0 bg-linear-to-br from-navy via-navy-light to-[#1c3a6e]" />
