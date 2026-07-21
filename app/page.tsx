@@ -12,6 +12,7 @@ import CTA from "@/components/home/CTA";
 export default function Home() {
   return (
     <>
+
       <Hero />
       <Features />
       <ServicesPreview />
@@ -22,6 +23,7 @@ export default function Home() {
       <FaqPreview />
       <BlogPreview />
       <CTA />
+      
     </>
   );
 }
