@@ -50,11 +50,11 @@ export default function FooterServices() {
         <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
           Hizmetler
         </h3>
-        <ul className="mt-4 space-y-2.5">
+        <ul className="mt-4">
           <li>
             <Link
               href="/hizmetler"
-              className="text-sm text-white/65 transition hover:text-accent"
+              className="block py-1.5 text-sm text-white/65 transition hover:text-accent"
             >
               Tüm hizmetleri gör
             </Link>
@@ -74,12 +74,12 @@ export default function FooterServices() {
         Hizmetler
       </h3>
 
-      <ul className="mt-4 space-y-2.5">
+      <ul className="mt-4">
         {visible.map((service) => (
           <li key={service.id}>
             <Link
               href={`/hizmetler/${service.slug}`}
-              className="group inline-flex max-w-full items-center gap-1 text-sm text-white/65 transition hover:text-accent"
+              className="group inline-flex max-w-full items-center gap-1 py-1.5 text-sm text-white/65 transition hover:text-accent"
             >
               <span className="truncate">{service.title}</span>
               <ArrowUpRight className="h-3.5 w-3.5 shrink-0 opacity-0 transition group-hover:opacity-100" />
@@ -94,7 +94,7 @@ export default function FooterServices() {
             type="button"
             aria-expanded={open}
             onClick={() => setOpen((value) => !value)}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-accent transition hover:text-accent/80"
+            className="inline-flex items-center gap-1.5 py-1.5 text-xs font-semibold text-accent transition hover:text-accent/80"
           >
             {open ? "Gizle" : `Hepsini göster (${remaining.length})`}
             <ChevronDown
@@ -113,12 +113,12 @@ export default function FooterServices() {
                 transition={{ duration: 0.25, ease: "easeOut" }}
                 className="overflow-hidden"
               >
-                <ul className="scrollbar-dark mt-3 max-h-56 space-y-2.5 overflow-y-auto border-t border-white/10 pt-3 pr-1">
+                <ul className="scrollbar-dark mt-3 max-h-56 overflow-y-auto border-t border-white/10 pt-3 pr-1">
                   {remaining.map((service) => (
                     <li key={service.id}>
                       <Link
                         href={`/hizmetler/${service.slug}`}
-                        className="group inline-flex max-w-full items-center gap-1 text-sm text-white/65 transition hover:text-accent"
+                        className="group inline-flex max-w-full items-center gap-1 py-1.5 text-sm text-white/65 transition hover:text-accent"
                       >
                         <span className="truncate">{service.title}</span>
                         <ArrowUpRight className="h-3.5 w-3.5 shrink-0 opacity-0 transition group-hover:opacity-100" />

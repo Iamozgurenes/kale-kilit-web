@@ -55,7 +55,6 @@ export default function Footer() {
           <Link
             href="/"
             className="inline-flex items-center gap-3 rounded-2xl bg-white px-3 py-2 text-navy"
-            aria-label={SITE.name}
           >
             <span className="relative flex h-10 w-10 shrink-0 items-center justify-center">
               <Image
@@ -108,12 +107,12 @@ export default function Footer() {
           <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
             Kurumsal
           </h3>
-          <ul className="mt-4 space-y-2.5">
+          <ul className="mt-4">
             {FOOTER_NAV.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-sm text-white/65 transition hover:text-accent"
+                  className="block py-1.5 text-sm text-white/65 transition hover:text-accent"
                 >
                   {link.label}
                 </Link>
@@ -130,12 +129,12 @@ export default function Footer() {
           <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
             Yasal
           </h3>
-          <ul className="mt-4 space-y-2.5">
+          <ul className="mt-4">
             {LEGAL_LINKS.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-sm text-white/65 transition hover:text-accent"
+                  className="block py-1.5 text-sm text-white/65 transition hover:text-accent"
                 >
                   {link.label}
                 </Link>

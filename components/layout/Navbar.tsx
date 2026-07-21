@@ -63,7 +63,6 @@ export default function Navbar() {
                 href="/"
                 onClick={() => setIsMenuOpen(false)}
                 className="flex items-center gap-3 text-navy"
-                aria-label={SITE.name}
               >
                 <span className="relative flex h-10 w-10 shrink-0 items-center justify-center">
                   <Image
@@ -180,7 +179,6 @@ export default function Navbar() {
           <Link
             href="/"
             className="group flex min-w-0 items-center gap-3 text-navy"
-            aria-label={SITE.name}
           >
             <span className="relative flex h-10 w-10 shrink-0 items-center justify-center">
               <Image
@@ -212,7 +210,7 @@ export default function Navbar() {
                       className={`relative px-3 py-2 text-[13px] font-medium tracking-wide transition-colors xl:px-3.5 ${
                         active
                           ? "text-navy"
-                          : "text-navy/55 hover:text-navy"
+                          : "text-navy/70 hover:text-navy"
                       }`}
                     >
                       {link.label}
@@ -243,7 +241,7 @@ export default function Navbar() {
                 <PhoneCall className="h-4 w-4" />
               </span>
               <span className="flex flex-col leading-none">
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-navy/65">
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-navy/80">
                   Acil Destek
                 </span>
                 <span className="mt-0.5 text-sm font-bold tabular-nums">
