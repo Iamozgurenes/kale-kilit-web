@@ -3,20 +3,6 @@ import { SITE } from "@/lib/constants";
 
 const DEFAULT_OG_IMAGE = "/genelog.png";
 
-export const DEFAULT_KEYWORDS = [
-  "Adana çilingir",
-  "Adana anahtarcı",
-  "Adana acil çilingir",
-  "Çukurova çilingir",
-  "Seyhan çilingir",
-  "oto çilingir Adana",
-  "ev çilingiri Adana",
-  "anahtar çoğaltma Adana",
-  "kasa açma Adana",
-  "kilit değişimi Adana",
-  "Kale Kilit Adana",
-];
-
 type PageSeoInput = {
   title: string;
   description: string;
@@ -24,7 +10,6 @@ type PageSeoInput = {
   image?: string;
   type?: "website" | "article";
   noIndex?: boolean;
-  keywords?: string[];
 };
 
 function absoluteUrl(path: string) {
@@ -50,7 +35,6 @@ export function createPageMetadata({
   image,
   type = "website",
   noIndex = false,
-  keywords,
 }: PageSeoInput): Metadata {
   const url = absoluteUrl(path);
   const ogImage = absoluteImage(image);
@@ -59,9 +43,6 @@ export function createPageMetadata({
   return {
     title: path === "/" ? { absolute: title } : title,
     description,
-    keywords: keywords?.length
-      ? [...keywords, ...DEFAULT_KEYWORDS]
-      : DEFAULT_KEYWORDS,
     alternates: {
       canonical: url,
     },
