@@ -17,7 +17,7 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata = createPageMetadata({
   title: "İletişim",
   description:
-    "Kale Kilit & Çilingir ile telefon, WhatsApp veya iletişim formu üzerinden hemen iletişime geçin. 7/24 acil çilingir hizmeti.",
+    "Adana çilingir ve anahtarcı iletişimi: telefon, WhatsApp veya form ile hemen ulaşın. Çukurova / Adana’da 7/24 acil çilingir hattı açık.",
   path: "/iletisim",
 });
 

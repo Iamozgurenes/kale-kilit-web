@@ -6,7 +6,7 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata = createPageMetadata({
   title: "Blog",
   description:
-    "Ev güvenliği, oto çilingirlik ve kilit sistemleri hakkında faydalı bilgiler ve öneriler.",
+    "Adana çilingir ve anahtarcı rehberi: ev güvenliği, oto çilingirlik, anahtar çoğaltma ve kilit sistemleri hakkında pratik bilgiler.",
   path: "/blog",
 });
 

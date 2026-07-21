@@ -6,7 +6,7 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata = createPageMetadata({
   title: "Gizlilik Politikası",
   description:
-    "Kale Kilit & Çilingir web sitesi gizlilik politikası ve kişisel verilerin korunmasına ilişkin bilgilendirme.",
+    "Adana çilingir Kale Kilit gizlilik politikası: web sitesi ziyaretinde ve hizmetlerde kişisel verilerin korunmasına ilişkin bilgilendirme.",
   path: "/gizlilik-politikasi",
 });
 

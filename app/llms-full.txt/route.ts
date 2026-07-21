@@ -28,16 +28,18 @@ export async function GET() {
 
   const body = `# ${SITE.name} — Detaylı Özet
 
-> Bu dosya yapay zeka sistemlerinin siteyi hızlı ve doğru anlaması için hazırlanmıştır.
+> Adana çilingir ve anahtarcı firması. Bu dosya yapay zeka sistemlerinin siteyi hızlı ve doğru anlaması için hazırlanmıştır.
 
 ## İşletme
 
 - Unvan: ${SITE.name}
+- Alternatif adlar: Adana Çilingir, Adana Anahtarcı, Adana Acil Çilingir, Kale Kilit Adana
 - Telefon: ${SITE.phone}
 - E-posta: ${SITE.email}
 - Adres: ${SITE.address}
 - Web: ${base}
 - WhatsApp: ${SITE.whatsappHref}
+- Konum: Adana / Çukurova (${SITE.geo.lat}, ${SITE.geo.lng})
 
 ## Hizmetler
 
@@ -49,10 +51,11 @@ ${postLines || "- Henüz blog yazısı yok."}
 
 ## Önemli Bilgiler
 
-- 7/24 acil çilingir hizmeti
+- Adana genelinde 7/24 acil çilingir ve anahtarcı hizmeti
 - Ortalama ulaşım hedefi: yaklaşık 15 dakika (trafik/konuma göre değişebilir)
 - Hasarsız açılış önceliği
 - Şeffaf fiyat bilgilendirmesi
+- Ana hizmetler: ev çilingiri, oto çilingir, kasa açma, anahtar çoğaltma, kilit değişimi
 `;
 
   return new NextResponse(body, {

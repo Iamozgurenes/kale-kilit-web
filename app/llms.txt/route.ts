@@ -8,22 +8,26 @@ export function GET() {
 
   const body = `# ${SITE.name}
 
-> Adana’da 7/24 acil çilingir hizmeti. Ev, oto, kasa çilingirliği ve güvenlik sistemleri.
+> Adana çilingir ve anahtarcı — 7/24 acil çilingir, ev-oto-kasa açma, anahtar çoğaltma ve kilit değişimi.
 
 Site: ${base}
 Telefon: ${SITE.phone}
 E-posta: ${SITE.email}
 Adres: ${SITE.address}
 
+## Anahtar Kelimeler
+
+Adana çilingir, Adana anahtarcı, Adana acil çilingir, Çukurova çilingir, oto çilingir Adana, ev çilingiri Adana, anahtar çoğaltma Adana
+
 ## Ana Sayfalar
 
-- [Anasayfa](${base}/): Acil çilingir hizmeti ve şirket özeti
-- [Hakkımızda](${base}/hakkimizda): Firma hikayesi, değerler ve hizmet bölgeleri
-- [Hizmetler](${base}/hizmetler): Tüm çilingirlik hizmetleri
-- [Projeler](${base}/projeler): Tamamlanan iş örnekleri
-- [Blog](${base}/blog): Güvenlik ve çilingirlik rehber yazıları
-- [SSS](${base}/sss): Sıkça sorulan sorular
-- [İletişim](${base}/iletisim): Telefon, WhatsApp ve iletişim formu
+- [Anasayfa](${base}/): Adana çilingir & anahtarcı — acil hizmet özeti
+- [Hakkımızda](${base}/hakkimizda): Adana çilingir firması hikayesi ve hizmet bölgeleri
+- [Hizmetler](${base}/hizmetler): Adana çilingirlik ve anahtarcılık hizmetleri
+- [Projeler](${base}/projeler): Adana’da tamamlanan iş örnekleri
+- [Blog](${base}/blog): Adana çilingir rehber yazıları
+- [SSS](${base}/sss): Adana çilingir sıkça sorulan sorular
+- [İletişim](${base}/iletisim): Adana çilingir telefon, WhatsApp ve form
 
 ## Yasal
 
@@ -41,7 +45,7 @@ Adres: ${SITE.address}
 
 ## Notlar
 
-- Hizmet alanı: Adana (Çukurova ve çevre ilçeler)
+- Hizmet alanı: Adana (Çukurova, Seyhan, Yüreğir, Sarıçam ve çevre ilçeler)
 - Çalışma: 7/24 kesintisiz acil destek
 - İletişim önceliği: telefon ve WhatsApp
 `;

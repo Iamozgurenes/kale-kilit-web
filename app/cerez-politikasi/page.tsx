@@ -6,7 +6,7 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata = createPageMetadata({
   title: "Çerez Politikası",
   description:
-    "Kale Kilit & Çilingir web sitesinde kullanılan çerezler ve tercihlerinizi yönetme hakkında bilgilendirme.",
+    "Adana çilingir Kale Kilit web sitesinde kullanılan çerezler, amaçları ve tercihlerinizi yönetme hakkında bilgilendirme.",
   path: "/cerez-politikasi",
 });
 

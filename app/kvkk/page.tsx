@@ -6,7 +6,7 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata = createPageMetadata({
   title: "KVKK Aydınlatma Metni",
   description:
-    "6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında Kale Kilit & Çilingir aydınlatma metni.",
+    "Adana çilingir ve anahtarcı firması Kale Kilit KVKK aydınlatma metni. 6698 sayılı Kanun kapsamında kişisel verilerin işlenmesi hakkında bilgilendirme.",
   path: "/kvkk",
 });
 

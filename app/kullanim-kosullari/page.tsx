@@ -6,7 +6,7 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata = createPageMetadata({
   title: "Kullanım Koşulları",
   description:
-    "Kale Kilit & Çilingir web sitesi kullanım koşulları ve yasal bilgilendirme.",
+    "Adana çilingir ve anahtarcı Kale Kilit web sitesi kullanım koşulları ve yasal bilgilendirme.",
   path: "/kullanim-kosullari",
 });
 

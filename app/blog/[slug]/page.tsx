@@ -25,7 +25,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return createPageMetadata({
     title: post.seoTitle || post.title,
-    description: post.seoDescription || post.excerpt,
+    description:
+      post.seoDescription ||
+      `${post.excerpt} | Adana çilingir ve anahtarcı rehberi.`,
     path: `/blog/${slug}`,
     image: post.coverImage || undefined,
     type: "article",

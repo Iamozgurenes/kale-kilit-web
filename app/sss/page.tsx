@@ -9,7 +9,7 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata = createPageMetadata({
   title: "Sıkça Sorulan Sorular",
   description:
-    "Çilingirlik hizmetlerimiz, ulaşım süremiz, fiyatlandırma ve daha fazlası hakkında merak edilenler.",
+    "Adana çilingir ve anahtarcı hakkında SSS: ulaşım süresi, 7/24 hizmet, fiyatlandırma, hasarsız açılış ve hizmet bölgeleri.",
   path: "/sss",
 });
 

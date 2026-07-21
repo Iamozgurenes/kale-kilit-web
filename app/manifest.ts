@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: SITE.name,
     short_name: "Kale Kilit",
     description:
-      "Adana’da 7/24 acil çilingir hizmeti. Ev, oto ve kasa çilingirliği.",
+      "Adana çilingir ve anahtarcı: 7/24 acil çilingir, ev-oto-kasa açma, anahtar çoğaltma. Çukurova / Adana.",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

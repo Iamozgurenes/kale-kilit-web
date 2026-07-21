@@ -7,7 +7,7 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata = createPageMetadata({
   title: "Projelerimiz",
   description:
-    "Adana genelinde tamamladığımız ev, oto, kasa çilingirliği ve güvenlik sistemi kurulum projelerinden örnekler.",
+    "Adana çilingir ve anahtarcı işlerimizden örnekler: ev, oto, kasa açma ve güvenlik sistemi kurulumları. Çukurova ve Adana genelinde tamamlanan projeler.",
   path: "/projeler",
 });
 

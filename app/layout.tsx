@@ -18,19 +18,23 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: "Kale Kilit & Çilingir | 7/24 Acil Çilingir Hizmeti Adana",
-    template: "%s | Kale Kilit & Çilingir",
+    default: "Adana Çilingir & Anahtarcı | 7/24 Acil | Kale Kilit",
+    template: "%s | Adana Çilingir | Kale Kilit",
   },
   description:
-    "Kapıda mı kaldınız? 15 dakikada oradayız. Adana’da ev, oto ve kasa çilingir hizmetlerinde 7/24 hızlı ve güvenilir çözüm.",
+    "Adana çilingir ve anahtarcı hizmeti: kapıda kaldınız mı? 7/24 acil çilingir, ev-oto-kasa açma, anahtar çoğaltma. Çukurova ve Adana genelinde ortalama 15 dakikada yanınızdayız.",
   keywords: [
     "Adana çilingir",
-    "acil çilingir",
+    "Adana anahtarcı",
+    "Adana acil çilingir",
+    "Çukurova çilingir",
+    "Seyhan çilingir",
     "oto çilingir Adana",
-    "ev çilingiri",
-    "kasa açma",
-    "kilit değişimi",
-    "Kale Kilit",
+    "ev çilingiri Adana",
+    "anahtar çoğaltma Adana",
+    "kasa açma Adana",
+    "kilit değişimi Adana",
+    "Kale Kilit Adana",
   ],
   authors: [{ name: SITE.name }],
   creator: SITE.name,
@@ -56,23 +60,23 @@ export const metadata: Metadata = {
     locale: "tr_TR",
     url: SITE.url,
     siteName: SITE.name,
-    title: "Kale Kilit & Çilingir | 7/24 Acil Çilingir Hizmeti Adana",
+    title: "Adana Çilingir & Anahtarcı | 7/24 Acil | Kale Kilit",
     description:
-      "Adana genelinde 7/24 çilingir hizmeti. Ev, oto ve kasa çilingirliğinde hızlı, hasarsız çözüm.",
+      "Adana çilingir ve anahtarcı: 7/24 acil müdahale, ev-oto-kasa açma, anahtar çoğaltma. Çukurova ve Adana genelinde hızlı, hasarsız çözüm.",
     images: [
       {
         url: "/genelog.png",
         width: 1200,
         height: 630,
-        alt: `${SITE.name} — 7/24 Çilingir`,
+        alt: "Adana çilingir ve anahtarcı — Kale Kilit",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kale Kilit & Çilingir | 7/24 Acil Çilingir",
+    title: "Adana Çilingir & Anahtarcı | 7/24 Acil",
     description:
-      "Adana’da 7/24 acil çilingir. Ev, oto ve kasa hizmetleri.",
+      "Adana’da 7/24 acil çilingir ve anahtarcı. Ev, oto, kasa açma ve anahtar çoğaltma.",
     images: ["/genelog.png"],
   },
   icons: {

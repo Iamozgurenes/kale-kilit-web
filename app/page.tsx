@@ -9,9 +9,9 @@ import HomeDynamicSections from "@/components/home/HomeDynamicSections";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata = createPageMetadata({
-  title: "Kale Kilit & Çilingir | 7/24 Acil Çilingir Hizmeti Adana",
+  title: "Adana Çilingir & Anahtarcı | 7/24 Acil | Kale Kilit",
   description:
-    "Kapıda mı kaldınız? Adana’da 15 dakikada yanınızdayız. Ev, oto ve kasa çilingir hizmetlerinde 7/24 hızlı çözüm.",
+    "Adana çilingir ve anahtarcı: kapıda kaldınız mı? 7/24 acil çilingir, ev-oto-kasa açma, anahtar çoğaltma. Çukurova ve Adana genelinde ortalama 15 dakikada yanınızdayız.",
   path: "/",
 });
 

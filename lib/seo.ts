@@ -3,6 +3,20 @@ import { SITE } from "@/lib/constants";
 
 const DEFAULT_OG_IMAGE = "/genelog.png";
 
+export const DEFAULT_KEYWORDS = [
+  "Adana çilingir",
+  "Adana anahtarcı",
+  "Adana acil çilingir",
+  "Çukurova çilingir",
+  "Seyhan çilingir",
+  "oto çilingir Adana",
+  "ev çilingiri Adana",
+  "anahtar çoğaltma Adana",
+  "kasa açma Adana",
+  "kilit değişimi Adana",
+  "Kale Kilit Adana",
+];
+
 type PageSeoInput = {
   title: string;
   description: string;
@@ -10,6 +24,7 @@ type PageSeoInput = {
   image?: string;
   type?: "website" | "article";
   noIndex?: boolean;
+  keywords?: string[];
 };
 
 function absoluteUrl(path: string) {
@@ -24,6 +39,10 @@ function absoluteImage(image?: string) {
   return absoluteUrl(src);
 }
 
+function brandedTitle(title: string) {
+  return `${title} | Adana Çilingir | ${SITE.name}`;
+}
+
 export function createPageMetadata({
   title,
   description,
@@ -31,15 +50,18 @@ export function createPageMetadata({
   image,
   type = "website",
   noIndex = false,
+  keywords,
 }: PageSeoInput): Metadata {
   const url = absoluteUrl(path);
   const ogImage = absoluteImage(image);
-  const fullTitle =
-    path === "/" ? title : undefined; // layout template handles inner pages
+  const displayTitle = path === "/" ? title : brandedTitle(title);
 
   return {
     title: path === "/" ? { absolute: title } : title,
     description,
+    keywords: keywords?.length
+      ? [...keywords, ...DEFAULT_KEYWORDS]
+      : DEFAULT_KEYWORDS,
     alternates: {
       canonical: url,
     },
@@ -47,7 +69,7 @@ export function createPageMetadata({
       ? { index: false, follow: false }
       : { index: true, follow: true },
     openGraph: {
-      title: fullTitle ?? `${title} | ${SITE.name}`,
+      title: displayTitle,
       description,
       url,
       siteName: SITE.name,
@@ -58,13 +80,13 @@ export function createPageMetadata({
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: SITE.name,
+          alt: `Adana çilingir ve anahtarcı — ${SITE.name}`,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: fullTitle ?? `${title} | ${SITE.name}`,
+      title: displayTitle,
       description,
       images: [ogImage],
     },
@@ -76,6 +98,14 @@ export function getSiteJsonLd() {
     "@context": "https://schema.org",
     "@type": "Locksmith",
     name: SITE.name,
+    alternateName: [
+      "Adana Çilingir",
+      "Adana Anahtarcı",
+      "Adana Acil Çilingir",
+      "Kale Kilit Adana",
+    ],
+    description:
+      "Adana çilingir ve anahtarcı: 7/24 acil çilingir, ev-oto-kasa açma, anahtar çoğaltma ve kilit değişimi. Çukurova ve çevre ilçelerde hızlı hizmet.",
     image: absoluteImage(),
     url: SITE.url,
     telephone: SITE.phoneHref.replace("tel:", ""),

@@ -24,8 +24,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!service) return { title: "Hizmet | Kale Kilit & Çilingir" };
 
   return createPageMetadata({
-    title: service.seoTitle || service.title,
-    description: service.seoDescription || service.shortDescription,
+    title: service.seoTitle || `${service.title} Adana`,
+    description:
+      service.seoDescription ||
+      `${service.shortDescription} Adana çilingir ve anahtarcı hizmeti — 7/24 acil müdahale.`,
     path: `/hizmetler/${slug}`,
     image: service.coverImage || undefined,
   });

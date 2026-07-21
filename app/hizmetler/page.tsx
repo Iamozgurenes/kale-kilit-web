@@ -7,7 +7,7 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata = createPageMetadata({
   title: "Hizmetlerimiz",
   description:
-    "Ev çilingiri, oto çilingir, kasa açma, kilit değişimi ve güvenlik sistemleri dahil tüm çilingirlik hizmetlerimiz.",
+    "Adana çilingir ve anahtarcı hizmetleri: ev çilingiri, oto çilingir, kasa açma, anahtar çoğaltma, kilit değişimi ve güvenlik sistemleri. 7/24 acil müdahale.",
   path: "/hizmetler",
 });
 

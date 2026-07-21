@@ -18,7 +18,7 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata = createPageMetadata({
   title: "Hakkımızda",
   description:
-    "Kale Kilit & Çilingir'in hikayesi, misyonu ve vizyonu. 10 yılı aşkın tecrübeyle 7/24 güvenilir çilingir hizmeti.",
+    "Adana çilingir ve anahtarcı firması Kale Kilit: hikayemiz, misyonumuz ve vizyonumuz. 10 yılı aşkın tecrübeyle Adana’da 7/24 güvenilir hizmet.",
   path: "/hakkimizda",
 });
 
