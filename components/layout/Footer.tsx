@@ -3,14 +3,11 @@ import Image from "next/image";
 import { Mail, MapPin, MessageCircle, PhoneCall } from "lucide-react";
 import { LEGAL_LINKS } from "@/lib/data/legal";
 import { NAV_LINKS, SITE } from "@/lib/constants";
-import { getServices } from "@/lib/services";
 import FooterServices from "@/components/layout/FooterServices";
 
 const FOOTER_NAV = NAV_LINKS.filter((link) => link.href !== "/");
 
-export default async function Footer() {
-  const services = await getServices({ limit: 100 }).catch(() => []);
-
+export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-navy text-white">
       <div
@@ -126,13 +123,7 @@ export default async function Footer() {
         </div>
 
         <div className="lg:col-span-3">
-          <FooterServices
-            services={services.map((service) => ({
-              id: service.id,
-              title: service.title,
-              slug: service.slug,
-            }))}
-          />
+          <FooterServices />
         </div>
 
         <div className="lg:col-span-3">
