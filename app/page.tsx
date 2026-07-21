@@ -30,7 +30,7 @@ export default async function Home() {
       <Testimonials />
       <FaqPreview />
       <BlogPreview posts={posts} />
-      <CTA />
+      {/* <CTA /> */}
     </>
   );
 }

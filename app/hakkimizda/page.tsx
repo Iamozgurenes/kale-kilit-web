@@ -258,7 +258,7 @@ export default function AboutPage() {
 
       <Process />
       <Testimonials />
-      <CTA />
+      {/* <CTA /> */}
     </>
   );
 }

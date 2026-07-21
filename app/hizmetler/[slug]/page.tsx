@@ -188,7 +188,7 @@ export default async function ServiceDetailPage({ params }: Props) {
         </section>
       )}
 
-      <CTA />
+      {/* <CTA /> */}
     </>
   );
 }

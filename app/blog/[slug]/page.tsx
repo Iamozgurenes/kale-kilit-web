@@ -7,6 +7,7 @@ import Button from "@/components/ui/Button";
 import CTA from "@/components/home/CTA";
 import { getPostBySlug, getPosts } from "@/lib/posts";
 import { SITE } from "@/lib/constants";
+import BlogCard from "@/components/ui/BlogCard";
 
 export const dynamic = "force-dynamic";
 
@@ -177,7 +178,7 @@ export default async function BlogDetailPage({ params }: Props) {
         </section>
       )}
 
-      <CTA />
+      {/* <CTA /> */}
     </>
   );
 }

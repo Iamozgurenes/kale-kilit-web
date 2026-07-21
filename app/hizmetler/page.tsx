@@ -154,7 +154,7 @@ export default async function ServicesPage() {
       </section>
 
       <Process />
-      <CTA />
+      {/* <CTA /> */}
     </>
   );
 }
