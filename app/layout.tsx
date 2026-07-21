@@ -10,7 +10,6 @@ const poppins = Poppins({
   weight: ["400", "500", "600", "700", "800"],
 });
 
-export const runtime = "edge";
 
 export const metadata: Metadata = {
   title: "Kale Kilit & Çilingir | 7/24 Acil Çilingir Hizmeti",
