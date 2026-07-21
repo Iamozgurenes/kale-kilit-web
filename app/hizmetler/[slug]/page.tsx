@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowLeft, CheckCircle2, PhoneCall } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { getServiceBySlug, getServices } from "@/lib/services";
-import { getServiceIcon } from "@/lib/icons";
+import { ICON_MAP, DefaultServiceIcon } from "@/lib/icons";
 import { SITE } from "@/lib/constants";
 import { createPageMetadata } from "@/lib/seo";
 import { getBannerImage } from "@/lib/banner";
@@ -39,7 +39,7 @@ export default async function ServiceDetailPage({ params }: Props) {
   const service = await getServiceBySlug(slug).catch(() => null);
   if (!service) notFound();
 
-  const Icon = getServiceIcon(service.icon);
+  const Icon = (service.icon && ICON_MAP[service.icon]) || DefaultServiceIcon;
   const others = (await getServices().catch(() => []))
     .filter((item) => item.id !== service.id)
     .slice(0, 3);
@@ -161,7 +161,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             <h2 className="text-2xl font-extrabold text-navy">Diğer Hizmetler</h2>
             <div className="mt-8 grid gap-5 sm:grid-cols-3">
               {others.map((item) => {
-                const OtherIcon = getServiceIcon(item.icon);
+                const OtherIcon = (item.icon && ICON_MAP[item.icon]) || DefaultServiceIcon;
                 return (
                   <Link
                     key={item.id}

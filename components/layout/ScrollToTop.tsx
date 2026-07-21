@@ -2,30 +2,17 @@
 
 import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
-
-const COOKIE_KEY = "kale-kilit-cookie-consent";
+import { useHasCookieConsent } from "@/lib/useCookieConsent";
 
 export default function ScrollToTop() {
   const [visible, setVisible] = useState(false);
-  const [lifted, setLifted] = useState(false);
+  const lifted = !useHasCookieConsent();
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 320);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    try {
-      setLifted(!window.localStorage.getItem(COOKIE_KEY));
-    } catch {
-      setLifted(true);
-    }
-
-    const onConsent = () => setLifted(false);
-    window.addEventListener("kale-cookie-accepted", onConsent);
-    return () => window.removeEventListener("kale-cookie-accepted", onConsent);
   }, []);
 
   if (!visible) return null;

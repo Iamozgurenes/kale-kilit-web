@@ -12,7 +12,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-const ICON_MAP: Record<string, LucideIcon> = {
+export const ICON_MAP: Record<string, LucideIcon> = {
   Home,
   Car,
   Lock,
@@ -24,6 +24,8 @@ const ICON_MAP: Record<string, LucideIcon> = {
   Clock3,
   BadgeCheck,
 };
+
+export { Wrench as DefaultServiceIcon };
 
 export function getServiceIcon(name?: string | null): LucideIcon {
   if (!name) return Wrench;

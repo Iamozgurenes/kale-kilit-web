@@ -1,22 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Cookie } from "lucide-react";
+import { useHasCookieConsent } from "@/lib/useCookieConsent";
 
 const STORAGE_KEY = "kale-kilit-cookie-consent";
 
 export default function CookieConsent() {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    try {
-      const saved = window.localStorage.getItem(STORAGE_KEY);
-      if (!saved) setVisible(true);
-    } catch {
-      setVisible(true);
-    }
-  }, []);
+  const hasConsent = useHasCookieConsent();
 
   const accept = () => {
     try {
@@ -24,11 +15,10 @@ export default function CookieConsent() {
     } catch {
       // ignore storage errors
     }
-    setVisible(false);
     window.dispatchEvent(new Event("kale-cookie-accepted"));
   };
 
-  if (!visible) return null;
+  if (hasConsent) return null;
 
   return (
     <div className="fixed inset-x-0 bottom-0 z-[60] p-4 sm:p-6">

@@ -1,25 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { MessageCircle, PhoneCall } from "lucide-react";
 import { SITE } from "@/lib/constants";
-
-const COOKIE_KEY = "kale-kilit-cookie-consent";
+import { useHasCookieConsent } from "@/lib/useCookieConsent";
 
 export default function FloatingContact() {
-  const [lifted, setLifted] = useState(false);
-
-  useEffect(() => {
-    try {
-      setLifted(!window.localStorage.getItem(COOKIE_KEY));
-    } catch {
-      setLifted(true);
-    }
-
-    const onConsent = () => setLifted(false);
-    window.addEventListener("kale-cookie-accepted", onConsent);
-    return () => window.removeEventListener("kale-cookie-accepted", onConsent);
-  }, []);
+  const lifted = !useHasCookieConsent();
 
   return (
     <div
