@@ -1,20 +1,30 @@
 import Link from "next/link";
 import { MapPin, Mail, PhoneCall, ShieldCheck } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/constants";
+import Image from "next/image";
 
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-navy-light">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
         <div>
-          <div className="flex items-center gap-2 text-white">
-            <ShieldCheck className="h-6 w-6 text-accent" />
-            <span className="text-lg font-bold">{SITE.name}</span>
-          </div>
-          <p className="mt-4 text-sm leading-relaxed text-white/60">
-            7/24 hizmet veren, güvenilir ve yetkili çilingir ekibi. Ev, oto ve
-            kasa çilingirliğinde şehrinizin ilk tercihi.
-          </p>
+        <Link
+          href="/"
+          className="group flex min-w-0 bg-white p-2 rounded-full ring-1 ring-inset ring-white/10 items-center gap-3 text-navy"
+          aria-label={SITE.name}
+        >
+          <span className="relative flex h-10 w-10 shrink-0 items-center justify-center">
+            <Image src="/logoico.svg" alt="Kale Kilit" width={30} height={30} className="w-full h-full object-contain" />
+          </span>
+          <span className="flex min-w-0 flex-col leading-tight">
+            <span className="truncate text-base font-bold tracking-tight sm:text-lg">
+              Kale Kilit
+            </span>
+            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-navy/40">
+              Çilingir · 7/24
+            </span>
+          </span>
+        </Link>
         </div>
 
         <div>

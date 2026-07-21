@@ -41,4 +41,30 @@ export const BLOG_POSTS = [
     excerpt:
       "Parmak izi, şifreli ve kartlı geçiş sistemleri arasında seçim yaparken dikkat edilmesi gereken kriterler.",
   },
+  {
+    title: "Anahtarınızı Kaybettiğinizde Güvenlik Kontrol Listesi",
+    date: "2026-03-12",
+    category: "Ev Güvenliği",
+    excerpt:
+      "Anahtar kaybında hangi kilitlerin değişmesi gerektiği ve kısa sürede alınması gereken önlemler.",
+  },
+  {
+    title: "Kışın Donan Kilitlere Nasıl Müdahale Edilir?",
+    date: "2026-02-25",
+    category: "Ev Güvenliği",
+    excerpt:
+      "Soğuk havalarda kilit donması durumunda yapılmaması gerekenler ve profesyonel çözüm yolları.",
+  },
+  {
+    title: "Kurumsal Filolar İçin Anahtar Yönetimi",
+    date: "2026-02-08",
+    category: "Oto Çilingir",
+    excerpt:
+      "Çok araçlı işletmelerde yedek anahtar, kayıt ve acil müdahale sürecini nasıl planlamalısınız?",
+  },
+];
+
+export const BLOG_CATEGORIES = [
+  "Tümü",
+  ...Array.from(new Set(BLOG_POSTS.map((p) => p.category))),
 ];

@@ -1,10 +1,10 @@
 export const SITE = {
   name: "Kale Kilit & Çilingir",
-  phone: "0532 000 00 00",
-  phoneHref: "tel:+905320000000",
-  whatsappHref: "https://wa.me/905320000000",
+  phone: "0535 528 24 22",
+  phoneHref: "tel:+905355282422",
+  whatsappHref: "https://wa.me/905355282422",
   email: "info@kalecilik.com",
-  address: "Merkez Mah. Anahtar Sok. No:1, İstanbul",
+  address: "Yurt, Kurttepe Cd. Unalır AP zemin KT. 8/C, 01360 Çukurova/Adana",
 };
 
 export const NAV_LINKS = [

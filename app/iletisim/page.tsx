@@ -1,9 +1,19 @@
 import type { Metadata } from "next";
-import { Clock3, Mail, MapPin, MessageCircle, PhoneCall } from "lucide-react";
+import {
+  Clock3,
+  Mail,
+  MapPin,
+  MessageCircle,
+  PhoneCall,
+  ShieldCheck,
+} from "lucide-react";
 import PageHeader from "@/components/ui/PageHeader";
 import Button from "@/components/ui/Button";
 import ContactForm from "@/components/ContactForm";
+import Accordion from "@/components/ui/Accordion";
+import CTA from "@/components/home/CTA";
 import { SITE } from "@/lib/constants";
+import { FAQS } from "@/lib/data/faq";
 
 export const metadata: Metadata = {
   title: "İletişim | Kale Kilit & Çilingir",
@@ -18,6 +28,21 @@ const CONTACT_ITEMS = [
   { icon: Clock3, label: "Çalışma Saatleri", value: "7/24 Kesintisiz Hizmet" },
 ];
 
+const SERVICE_AREAS = [
+  "Kadıköy",
+  "Ataşehir",
+  "Üsküdar",
+  "Maltepe",
+  "Kartal",
+  "Pendik",
+  "Şişli",
+  "Beşiktaş",
+  "Bakırköy",
+  "Levent",
+  "Sarıyer",
+  "Beykoz",
+];
+
 export default function ContactPage() {
   return (
     <>
@@ -27,10 +52,34 @@ export default function ContactPage() {
         description="Acil durumlar için hemen arayın, diğer talepleriniz için formu doldurun."
       />
 
+      <section className="bg-accent py-5">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 text-center sm:flex-row sm:px-6 sm:text-left">
+          <div className="flex items-center gap-3 text-navy">
+            <ShieldCheck className="h-6 w-6 shrink-0" />
+            <p className="text-sm font-semibold sm:text-base">
+              Acil çilingir desteği için 7/24 hattımız açık — ortalama 15
+              dakikada yanınızdayız.
+            </p>
+          </div>
+          <a
+            href={SITE.phoneHref}
+            className="inline-flex items-center gap-2 rounded-xl bg-navy px-5 py-2.5 text-sm font-bold text-white transition hover:bg-navy-light"
+          >
+            <PhoneCall className="h-4 w-4" />
+            {SITE.phone}
+          </a>
+        </div>
+      </section>
+
       <section className="bg-white py-16 sm:py-24">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-5 lg:gap-12">
           <div className="lg:col-span-2">
-            <div className="flex flex-col gap-4">
+            <h2 className="text-xl font-extrabold text-navy">İletişim Bilgileri</h2>
+            <p className="mt-2 text-sm text-black/60">
+              Telefon ve WhatsApp en hızlı kanallarımızdır.
+            </p>
+
+            <div className="mt-6 flex flex-col gap-4">
               {CONTACT_ITEMS.map((item) => (
                 <div
                   key={item.label}
@@ -66,7 +115,7 @@ export default function ContactPage() {
               <Button
                 href={SITE.whatsappHref}
                 variant="secondary"
-                className="w-full text-navy! ring-navy/20! bg-navy/5! hover:bg-navy/10! sm:w-auto"
+                className="w-full bg-navy/5! text-navy! ring-navy/20! hover:bg-navy/10! sm:w-auto"
               >
                 <MessageCircle className="h-5 w-5" />
                 WhatsApp
@@ -75,10 +124,75 @@ export default function ContactPage() {
           </div>
 
           <div className="lg:col-span-3">
+            <h2 className="mb-4 text-xl font-extrabold text-navy">
+              Mesaj Gönderin
+            </h2>
             <ContactForm />
           </div>
         </div>
       </section>
+
+      <section className="bg-neutral-50 py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mb-8 max-w-2xl">
+            <h2 className="text-2xl font-extrabold text-navy">
+              Hizmet Bölgelerimiz
+            </h2>
+            <p className="mt-3 text-black/60">
+              İstanbul Anadolu ve Avrupa yakasında geniş bir alanda hizmet
+              veriyoruz.
+            </p>
+          </div>
+          <ul className="flex flex-wrap gap-2">
+            {SERVICE_AREAS.map((area) => (
+              <li
+                key={area}
+                className="rounded-xl bg-white px-4 py-2 text-sm font-medium text-navy ring-1 ring-black/5"
+              >
+                {area}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="bg-white py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mb-10 text-center">
+            <h2 className="text-2xl font-extrabold text-navy">
+              Hızlı Yanıtlar
+            </h2>
+            <p className="mt-3 text-black/60">
+              Aramadan önce merak ettiğiniz birkaç nokta.
+            </p>
+          </div>
+          <Accordion
+            items={FAQS.slice(0, 4).map(({ question, answer }) => ({
+              question,
+              answer,
+            }))}
+          />
+        </div>
+      </section>
+
+      <section className="bg-navy py-14">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="overflow-hidden rounded-2xl ring-1 ring-white/10">
+            <div className="flex min-h-[220px] flex-col items-center justify-center bg-navy-light px-6 py-12 text-center">
+              <MapPin className="h-8 w-8 text-accent" />
+              <p className="mt-4 text-lg font-bold text-white">Harita Konumu</p>
+              <p className="mt-2 max-w-md text-sm text-white/60">
+                {SITE.address}
+              </p>
+              <p className="mt-4 text-xs text-white/40">
+                Gerçek harita entegrasyonu için Google Maps embed eklenebilir.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <CTA />
     </>
   );
 }

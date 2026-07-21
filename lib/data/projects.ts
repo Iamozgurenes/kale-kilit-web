@@ -41,4 +41,30 @@ export const PROJECTS = [
     description:
       "Bir yazılım ofisine parmak izi ve şifreli akıllı kilit sistemi kurularak erişim kayıt altına alındı.",
   },
+  {
+    title: "Villa Çelik Kapı Güçlendirme",
+    category: "Kilit Değişimi",
+    location: "Beykoz, İstanbul",
+    description:
+      "Müstakil villada çelik kapı kilit mekanizması yenilenerek ek güvenlik noktaları eklendi.",
+  },
+  {
+    title: "Otopark Acil Araç Açılışı",
+    category: "Oto Çilingir",
+    location: "Bakırköy, İstanbul",
+    description:
+      "AVM otoparkında kilitli kalan araç hasarsız açıldı, yedek anahtar aynı gün teslim edildi.",
+  },
+  {
+    title: "Mağaza Kasa Acil Müdahale",
+    category: "Kasa Açma",
+    location: "Beşiktaş, İstanbul",
+    description:
+      "Perakende mağazasında sabah açılışı öncesi arızalanan kasa hızlı ve hasarsız şekilde açıldı.",
+  },
+];
+
+export const PROJECT_CATEGORIES = [
+  "Tümü",
+  ...Array.from(new Set(PROJECTS.map((p) => p.category))),
 ];
