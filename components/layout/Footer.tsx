@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail, MapPin, MessageCircle, PhoneCall } from "lucide-react";
 import { LEGAL_LINKS } from "@/lib/data/legal";
+import { AUTHORIZED_BRANDS } from "@/lib/data/authorized-brands";
 import { NAV_LINKS, SITE } from "@/lib/constants";
 import FooterServices from "@/components/layout/FooterServices";
 
@@ -50,8 +51,8 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="relative mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-12 lg:gap-8">
-        <div className="lg:col-span-4">
+      <div className="relative mx-auto grid  gap-10 px-4 py-14 sm:px-6 lg:grid-cols-12 lg:gap-8">
+        <div className="lg:col-span-3">
           <Link
             href="/"
             className="inline-flex items-center gap-3 rounded-2xl bg-white px-3 py-2 text-navy"
@@ -121,11 +122,29 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="lg:col-span-3">
+        <div className="lg:col-span-2">
           <FooterServices />
         </div>
 
         <div className="lg:col-span-3">
+          <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
+            Yetkili Servis
+          </h3>
+          <ul className="mt-4">
+            {AUTHORIZED_BRANDS.map((brand) => (
+              <li key={brand.slug}>
+                <Link
+                  href={`/yetkili-servis/${brand.slug}`}
+                  className="block py-1.5 text-sm text-white/65 transition hover:text-accent"
+                >
+                  {brand.shortTitle}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="lg:col-span-2">
           <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
             Yasal
           </h3>

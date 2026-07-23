@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE } from "@/lib/constants";
 import { getPosts } from "@/lib/posts";
 import { getServices } from "@/lib/services";
+import { AUTHORIZED_BRANDS } from "@/lib/data/authorized-brands";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = SITE.url.replace(/\/$/, "");
@@ -10,6 +11,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: base, lastModified: new Date(), changeFrequency: "daily", priority: 1 },
     { url: `${base}/hakkimizda`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/hizmetler`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/yetkili-servis`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/projeler`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
     { url: `${base}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
     { url: `${base}/sss`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
@@ -25,6 +27,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     getPosts().catch(() => []),
   ]);
 
+  const brandRoutes: MetadataRoute.Sitemap = AUTHORIZED_BRANDS.map((brand) => ({
+    url: `${base}/yetkili-servis/${brand.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.88,
+  }));
+
   const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({
     url: `${base}/hizmetler/${service.slug}`,
     lastModified: new Date(),
@@ -39,5 +48,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.65,
   }));
 
-  return [...staticRoutes, ...serviceRoutes, ...postRoutes];
+  return [...staticRoutes, ...brandRoutes, ...serviceRoutes, ...postRoutes];
 }

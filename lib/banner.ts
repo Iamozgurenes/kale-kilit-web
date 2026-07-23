@@ -9,6 +9,8 @@ export const PAGE_BANNERS = {
   "/hakkimizda": BANNER.slide1,
   "/hizmetler": BANNER.slide2,
   "/hizmetler/[slug]": BANNER.slide2,
+  "/yetkili-servis": BANNER.slide1,
+  "/yetkili-servis/[slug]": BANNER.slide1,
   "/projeler": BANNER.slide3,
   "/blog": BANNER.slide1,
   "/blog/[slug]": BANNER.slide1,

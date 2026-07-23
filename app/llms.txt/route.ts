@@ -24,6 +24,11 @@ Adana çilingir, Adana anahtarcı, Adana acil çilingir, Çukurova çilingir, ot
 - [Anasayfa](${base}/): Adana çilingir & anahtarcı — acil hizmet özeti
 - [Hakkımızda](${base}/hakkimizda): Adana çilingir firması hikayesi ve hizmet bölgeleri
 - [Hizmetler](${base}/hizmetler): Adana çilingirlik ve anahtarcılık hizmetleri
+- [Yetkili Servis](${base}/yetkili-servis): Kale Kilit, Multlock, Desi, Dortek kapı yetkili servis
+- [Kale Kilit Yetkili Servis](${base}/yetkili-servis/adana-kale-kilit-yetkili-servis)
+- [Multlock Yetkili Servis](${base}/yetkili-servis/adana-multlock-yetkili-servis)
+- [Desi Yetkili Servis](${base}/yetkili-servis/adana-desi-yetkili-servis)
+- [Dortek Kapı Yetkili Servis](${base}/yetkili-servis/adana-dortek-kapi-yetkili-servis)
 - [Projeler](${base}/projeler): Adana’da tamamlanan iş örnekleri
 - [Blog](${base}/blog): Adana çilingir rehber yazıları
 - [SSS](${base}/sss): Adana çilingir sıkça sorulan sorular

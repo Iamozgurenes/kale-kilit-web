@@ -75,10 +75,10 @@ export default function Navbar() {
                 </span>
                 <span className="flex flex-col leading-tight">
                   <span className="text-base font-bold tracking-tight">
-                    Kale Kilit
+                    KALE KİLİT YETKİLİ SERVİS
                   </span>
                   <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-navy/65">
-                    Çilingir · 7/24
+                    MURAT TAÇYILDIZ
                   </span>
                 </span>
               </Link>
@@ -175,10 +175,10 @@ export default function Navbar() {
             : "border-b border-black/5 bg-white"
         }`}
       >
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:h-[4.25rem] sm:px-6">
+        <div className="mx-auto flex h-16 w-full max-w-[1400px] items-center justify-between gap-3 px-4 sm:h-[4.25rem] sm:gap-4 sm:px-6 xl:px-8">
           <Link
             href="/"
-            className="group flex min-w-0 items-center gap-3 text-navy"
+            className="group flex min-w-0 shrink items-center gap-2.5 text-navy xl:gap-3"
           >
             <span className="relative flex h-10 w-10 shrink-0 items-center justify-center">
               <Image
@@ -190,24 +190,24 @@ export default function Navbar() {
               />
             </span>
             <span className="flex min-w-0 flex-col leading-tight">
-              <span className="truncate text-base font-bold tracking-tight sm:text-lg">
-                Kale Kilit
+              <span className="truncate text-sm font-bold tracking-tight sm:text-base xl:text-lg">
+                KALE KİLİT YETKİLİ SERVİS
               </span>
-              <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-navy/65">
-                Çilingir · 7/24
+              <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-navy/65 xl:text-[11px]">
+                MURAT TAÇYILDIZ
               </span>
             </span>
           </Link>
 
-          <nav className="hidden items-center lg:flex" aria-label="Ana menü">
-            <ul className="flex items-center gap-0.5">
+          <nav className="hidden min-w-0 flex-1 items-center justify-center lg:flex" aria-label="Ana menü">
+            <ul className="flex flex-wrap items-center justify-center gap-x-0.5 gap-y-1 xl:gap-x-1">
               {NAV_LINKS.map((link) => {
                 const active = isActivePath(pathname, link.href);
                 return (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className={`relative px-3 py-2 text-[13px] font-medium tracking-wide transition-colors xl:px-3.5 ${
+                      className={`relative whitespace-nowrap px-2 py-2 text-xs font-medium tracking-wide transition-colors xl:px-3 xl:text-[13px] 2xl:px-3.5 ${
                         active
                           ? "text-navy"
                           : "text-navy/70 hover:text-navy"
@@ -217,7 +217,7 @@ export default function Navbar() {
                       {active && (
                         <motion.span
                           layoutId="nav-active"
-                          className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-accent"
+                          className="absolute inset-x-2 -bottom-0.5 h-0.5 rounded-full bg-accent xl:inset-x-3"
                           transition={{
                             type: "spring",
                             stiffness: 380,
@@ -232,10 +232,10 @@ export default function Navbar() {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <a
               href={SITE.phoneHref}
-              className="hidden items-center gap-3 rounded-xl bg-accent px-3.5 py-2 text-navy transition hover:bg-accent/90 active:scale-[0.98] md:flex"
+              className="hidden items-center gap-2.5 rounded-xl bg-accent px-3 py-2 text-navy transition hover:bg-accent/90 active:scale-[0.98] xl:flex xl:gap-3 xl:px-3.5"
             >
               <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-navy/10">
                 <PhoneCall className="h-4 w-4" />
@@ -253,7 +253,7 @@ export default function Navbar() {
             <a
               href={SITE.phoneHref}
               aria-label={`Hemen ara: ${SITE.phone}`}
-              className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent text-navy transition hover:bg-accent/90 active:scale-[0.98] md:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent text-navy transition hover:bg-accent/90 active:scale-[0.98] xl:hidden"
             >
               <PhoneCall className="h-5 w-5" />
             </a>

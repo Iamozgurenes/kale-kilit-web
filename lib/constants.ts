@@ -37,6 +37,7 @@ export const NAV_LINKS = [
   { label: "Anasayfa", href: "/" },
   { label: "Hakkımızda", href: "/hakkimizda" },
   { label: "Hizmetler", href: "/hizmetler" },
+  { label: "Yetkili Servis", href: "/yetkili-servis" },
   { label: "Projeler", href: "/projeler" },
   { label: "Blog", href: "/blog" },
   { label: "SSS", href: "/sss" },

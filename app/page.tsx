@@ -6,6 +6,7 @@ import ProjectsPreview from "@/components/home/ProjectsPreview";
 import Testimonials from "@/components/home/Testimonials";
 import FaqPreview from "@/components/home/FaqPreview";
 import HomeDynamicSections from "@/components/home/HomeDynamicSections";
+import AuthorizedBrandsPreview from "@/components/home/AuthorizedBrandsPreview";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata = createPageMetadata({
@@ -20,6 +21,7 @@ export default function Home() {
     <>
       <Hero />
       <Features />
+      <AuthorizedBrandsPreview />
       <HomeDynamicSections />
       <Stats />
       <Process />

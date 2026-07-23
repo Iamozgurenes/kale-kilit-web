@@ -10,10 +10,10 @@ export const HERO_SLIDES: HeroSlide[] = [
   {
     id: "acil",
     image: "/images/hero/slide-1.jpg",
-    title: "Kapıda mı kaldınız?",
-    highlight: "15 Dakikada",
+    title: "Kale Kilit",
+    highlight: "Yetkili Servis",
     description:
-      "Ev, oto ve kasa çilingir hizmetlerinde şehrinizin en hızlı ve güvenilir ekibi.",
+      "Adana’da ev, oto ve kasa çilingir hizmetlerinde 7/24 hızlı ve güvenilir çözüm.",
   },
   {
     id: "ev",
