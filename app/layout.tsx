@@ -6,6 +6,7 @@ import FloatingContact from "@/components/layout/FloatingContact";
 import CookieConsent from "@/components/layout/CookieConsent";
 import ScrollToTop from "@/components/layout/ScrollToTop";
 import JsonLd from "@/components/seo/JsonLd";
+import GoogleAnalytics from "@/components/seo/GoogleAnalytics";
 import { SITE } from "@/lib/constants";
 import "./globals.css";
 
@@ -84,6 +85,7 @@ export default function RootLayout({
   return (
     <html lang="tr" className={`${poppins.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-white text-foreground">
+        <GoogleAnalytics />
         <JsonLd />
         <Navbar />
         <main className="flex-1">{children}</main>
