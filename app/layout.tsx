@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Poppins } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -6,9 +7,10 @@ import FloatingContact from "@/components/layout/FloatingContact";
 import CookieConsent from "@/components/layout/CookieConsent";
 import ScrollToTop from "@/components/layout/ScrollToTop";
 import JsonLd from "@/components/seo/JsonLd";
-import GoogleAnalytics from "@/components/seo/GoogleAnalytics";
 import { SITE } from "@/lib/constants";
 import "./globals.css";
+
+const GA_ID = "G-C9LJQKVVJZ";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -85,7 +87,18 @@ export default function RootLayout({
   return (
     <html lang="tr" className={`${poppins.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-white text-foreground">
-        <GoogleAnalytics />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
         <JsonLd />
         <Navbar />
         <main className="flex-1">{children}</main>
