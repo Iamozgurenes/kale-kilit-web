@@ -16,6 +16,7 @@ export const metadata = createPageMetadata({
   path: "/",
 });
 
+
 export default function Home() {
   return (
     <>
