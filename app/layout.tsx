@@ -11,6 +11,7 @@ import { SITE } from "@/lib/constants";
 import "./globals.css";
 
 const GA_ID = "G-C9LJQKVVJZ";
+const ADS_ID = "AW-11397710707";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -91,12 +92,13 @@ export default function RootLayout({
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
           strategy="afterInteractive"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-gtag" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', '${GA_ID}');
+            gtag('config', '${ADS_ID}');
           `}
         </Script>
         <JsonLd />
