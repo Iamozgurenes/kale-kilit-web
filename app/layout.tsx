@@ -10,7 +10,7 @@ import JsonLd from "@/components/seo/JsonLd";
 import { SITE } from "@/lib/constants";
 import "./globals.css";
 
-const GA_ID = "G-C9LJQKVVJZ";
+const GA_ID = "G-Z5V58P8ZQZ";
 const ADS_ID = "AW-11397710707";
 
 const poppins = Poppins({
