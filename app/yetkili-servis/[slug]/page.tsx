@@ -13,6 +13,8 @@ import {
 } from "@/lib/cms/queries";
 import { getIcon } from "@/lib/icons";
 
+export const runtime = "edge";
+
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

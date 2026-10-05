@@ -6,6 +6,8 @@ import { getPosts } from "@/lib/posts";
 import { pageContent } from "@/lib/cms/types";
 import { getIcon } from "@/lib/icons";
 
+export const runtime = "edge";
+
 export async function generateMetadata() {
   return metadataForPage("blog", {
     title: "Blog",

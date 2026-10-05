@@ -21,6 +21,8 @@ import { getPosts } from "@/lib/posts";
 import { getServices } from "@/lib/services";
 import { pageContent } from "@/lib/cms/types";
 
+export const runtime = "edge";
+
 export async function generateMetadata() {
   return metadataForPage("home", {
     title: "Adana Çilingir & Anahtarcı | 7/24 Acil | Kale Kilit",

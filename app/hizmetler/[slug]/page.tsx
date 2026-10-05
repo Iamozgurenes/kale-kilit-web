@@ -10,6 +10,8 @@ import { getSiteSettings } from "@/lib/cms/queries";
 import { createPageMetadata } from "@/lib/seo";
 import { getBannerImage } from "@/lib/banner";
 
+export const runtime = "edge";
+
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

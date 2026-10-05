@@ -3,6 +3,7 @@ import { getPosts } from "@/lib/posts";
 import { getServices } from "@/lib/services";
 import { getAuthorizedBrands, getSiteSettings } from "@/lib/cms/queries";
 
+export const runtime = "edge";
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 

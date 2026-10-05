@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getSiteSettings } from "@/lib/cms/queries";
 
+export const runtime = "edge";
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
