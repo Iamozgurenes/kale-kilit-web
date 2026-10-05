@@ -1,8 +1,6 @@
 import AdminGuard from "@/components/admin/AdminGuard";
 import type { Metadata } from "next";
 
-export const runtime = "edge";
-
 export const metadata: Metadata = {
   title: "Yönetim paneli",
   robots: { index: false, follow: false },

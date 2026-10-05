@@ -4,7 +4,6 @@ import LegalHtml from "@/components/legal/LegalHtml";
 import { metadataForPage } from "@/lib/seo";
 import { getPage, getSiteSettings } from "@/lib/cms/queries";
 
-export const runtime = "edge";
 
 export async function generateMetadata() {
   return metadataForPage("kvkk", {

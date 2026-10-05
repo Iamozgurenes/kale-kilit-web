@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { LIVE_CACHE_CONTROL } from "@/lib/cms/live";
 import { getPostCategories, getPosts } from "@/lib/posts";
 
-export const runtime = "edge";
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 

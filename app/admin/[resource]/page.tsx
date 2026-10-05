@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import RecordList from "@/components/admin/RecordList";
 import { getResource } from "@/lib/admin/resources";
 
-export const runtime = "edge";
 
 export default async function ResourceListPage({
   params,

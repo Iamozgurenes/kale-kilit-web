@@ -8,7 +8,6 @@ import { getAuthorizedBrands, getSiteSettings } from "@/lib/cms/queries";
 import { getServices } from "@/lib/services";
 import "./globals.css";
 
-export const runtime = "edge";
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 

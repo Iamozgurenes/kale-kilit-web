@@ -6,7 +6,6 @@ import { getBlocks, getPage } from "@/lib/cms/queries";
 import { getServices } from "@/lib/services";
 import { getIcon } from "@/lib/icons";
 
-export const runtime = "edge";
 
 export async function generateMetadata() {
   return metadataForPage("services", {

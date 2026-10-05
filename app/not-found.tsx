@@ -3,7 +3,6 @@ import { Home, PhoneCall, Search } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { getSiteSettings } from "@/lib/cms/queries";
 
-export const runtime = "edge";
 
 export default async function NotFound() {
   const site = await getSiteSettings();

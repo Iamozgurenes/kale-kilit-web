@@ -14,7 +14,6 @@ import { metadataForPage } from "@/lib/seo";
 import { getFaqs, getPage, getSiteSettings } from "@/lib/cms/queries";
 import { pageContent } from "@/lib/cms/types";
 
-export const runtime = "edge";
 
 export async function generateMetadata() {
   return metadataForPage("contact", {

@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import RecordForm from "@/components/admin/RecordForm";
 import { getResource } from "@/lib/admin/resources";
 
-export const runtime = "edge";
 
 export default async function ResourceCreatePage({
   params,

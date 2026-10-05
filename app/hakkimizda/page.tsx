@@ -8,7 +8,6 @@ import { getBlocks, getPage, getSiteSettings, getTestimonials } from "@/lib/cms/
 import { asStringList, pageContent } from "@/lib/cms/types";
 import { getIcon } from "@/lib/icons";
 
-export const runtime = "edge";
 
 export async function generateMetadata() {
   return metadataForPage("about", {
