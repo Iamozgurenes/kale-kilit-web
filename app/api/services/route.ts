@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
+import { LIVE_CACHE_CONTROL } from "@/lib/cms/live";
 import { getServices } from "@/lib/services";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
-export const runtime = 'edge';
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
@@ -13,12 +15,15 @@ export async function GET(request: Request) {
       limit: Number.isFinite(limit) ? limit : undefined,
     });
 
-    return NextResponse.json({ items: services });
+    return NextResponse.json(
+      { items: services },
+      { headers: { "Cache-Control": LIVE_CACHE_CONTROL } },
+    );
   } catch (error) {
     console.error("[api/services]", error);
     return NextResponse.json(
       { error: "Hizmetler alınamadı", items: [] },
-      { status: 500 },
+      { status: 500, headers: { "Cache-Control": LIVE_CACHE_CONTROL } },
     );
   }
 }

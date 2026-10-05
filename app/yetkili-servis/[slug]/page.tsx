@@ -4,42 +4,45 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, CheckCircle2, PhoneCall } from "lucide-react";
 import Button from "@/components/ui/Button";
-import {
-  AUTHORIZED_BRANDS,
-  getAuthorizedBrandBySlug,
-  getAuthorizedBrandSlugs,
-} from "@/lib/data/authorized-brands";
-import { SITE } from "@/lib/constants";
 import { createPageMetadata } from "@/lib/seo";
 import { getBannerImage } from "@/lib/banner";
+import {
+  getAuthorizedBrandBySlug,
+  getAuthorizedBrands,
+  getSiteSettings,
+} from "@/lib/cms/queries";
+import { getIcon } from "@/lib/icons";
 
 type Props = { params: Promise<{ slug: string }> };
 
-export function generateStaticParams() {
-  return getAuthorizedBrandSlugs().map((slug) => ({ slug }));
-}
-
-export const dynamicParams = false;
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const brand = getAuthorizedBrandBySlug(slug);
+  const [brand, site] = await Promise.all([
+    getAuthorizedBrandBySlug(slug),
+    getSiteSettings(),
+  ]);
   if (!brand) return { title: "Yetkili Servis" };
 
   return createPageMetadata({
     title: brand.seoTitle,
     description: brand.seoDescription,
     path: `/yetkili-servis/${brand.slug}`,
+    site,
   });
 }
 
 export default async function AuthorizedBrandDetailPage({ params }: Props) {
   const { slug } = await params;
-  const brand = getAuthorizedBrandBySlug(slug);
+  const [brand, brands, site] = await Promise.all([
+    getAuthorizedBrandBySlug(slug),
+    getAuthorizedBrands(),
+    getSiteSettings(),
+  ]);
   if (!brand) notFound();
 
-  const Icon = brand.icon;
-  const others = AUTHORIZED_BRANDS.filter((item) => item.slug !== brand.slug);
+  const Icon = getIcon(brand.icon);
+  const others = brands.filter((item) => item.slug !== brand.slug);
+  const isHtml = /<\/?[a-z][\s\S]*>/i.test(brand.description);
 
   return (
     <>
@@ -85,7 +88,14 @@ export default async function AuthorizedBrandDetailPage({ params }: Props) {
             <h2 className="text-xl font-extrabold text-navy sm:text-2xl">
               {brand.brand} Yetkili Servis Hakkında
             </h2>
-            <p className="mt-5 leading-relaxed text-black/70">{brand.description}</p>
+            {isHtml ? (
+              <div
+                className="prose prose-neutral mt-5 max-w-none text-black/70"
+                dangerouslySetInnerHTML={{ __html: brand.description }}
+              />
+            ) : (
+              <p className="mt-5 leading-relaxed text-black/70">{brand.description}</p>
+            )}
 
             <div className="mt-10">
               <h3 className="text-lg font-bold text-navy">Öne Çıkanlar</h3>
@@ -96,9 +106,7 @@ export default async function AuthorizedBrandDetailPage({ params }: Props) {
                     className="flex items-start gap-3 rounded-xl bg-neutral-50 px-4 py-3 ring-1 ring-black/5"
                   >
                     <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
-                    <span className="text-sm font-medium text-navy/80">
-                      {feature}
-                    </span>
+                    <span className="text-sm font-medium text-navy/80">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -125,16 +133,14 @@ export default async function AuthorizedBrandDetailPage({ params }: Props) {
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
                   {brand.brand} Yetkili Servis
                 </p>
-                <h3 className="mt-3 text-xl font-bold">
-                  Bu marka için hemen arayın
-                </h3>
+                <h3 className="mt-3 text-xl font-bold">Bu marka için hemen arayın</h3>
                 <p className="mt-2 text-sm text-white/65">
                   Adana genelinde hızlı müdahale. Net fiyat, profesyonel çözüm.
                 </p>
                 <div className="mt-6 flex flex-col gap-3">
-                  <Button href={SITE.phoneHref} variant="primary" className="w-full">
+                  <Button href={site.phoneHref} variant="primary" className="w-full">
                     <PhoneCall className="h-5 w-5" />
-                    {SITE.phone}
+                    {site.phone}
                   </Button>
                   <Button href="/iletisim" variant="secondary" className="w-full">
                     İletişim Formu
@@ -149,12 +155,10 @@ export default async function AuthorizedBrandDetailPage({ params }: Props) {
       {others.length > 0 && (
         <section className="bg-neutral-50 py-16 sm:py-20">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <h2 className="text-2xl font-extrabold text-navy">
-              Diğer Yetkili Servisler
-            </h2>
+            <h2 className="text-2xl font-extrabold text-navy">Diğer Yetkili Servisler</h2>
             <div className="mt-8 grid gap-5 sm:grid-cols-3">
               {others.map((item) => {
-                const OtherIcon = item.icon;
+                const OtherIcon = getIcon(item.icon);
                 return (
                   <Link
                     key={item.slug}
@@ -165,9 +169,7 @@ export default async function AuthorizedBrandDetailPage({ params }: Props) {
                       <OtherIcon className="h-5 w-5" />
                     </div>
                     <h3 className="font-bold text-navy">{item.shortTitle}</h3>
-                    <p className="mt-2 line-clamp-2 text-sm text-black/60">
-                      {item.summary}
-                    </p>
+                    <p className="mt-2 line-clamp-2 text-sm text-black/60">{item.summary}</p>
                   </Link>
                 );
               })}

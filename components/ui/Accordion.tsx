@@ -45,7 +45,14 @@ export default function Accordion({ items }: { items: AccordionItem[] }) {
                   className="overflow-hidden"
                 >
                   <p className="px-6 pb-5 text-sm leading-relaxed text-black/60">
-                    {item.answer}
+                    {/<\/?[a-z][\s\S]*>/i.test(item.answer) ? (
+                      <span
+                        className="block [&_p]:mb-2 [&_p:last-child]:mb-0"
+                        dangerouslySetInnerHTML={{ __html: item.answer }}
+                      />
+                    ) : (
+                      item.answer
+                    )}
                   </p>
                 </motion.div>
               )}

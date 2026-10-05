@@ -3,19 +3,25 @@
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
-import { TESTIMONIALS } from "@/lib/data/testimonials";
+import type { CmsTestimonial } from "@/lib/cms/types";
 
-export default function Testimonials() {
+export default function Testimonials({
+  items,
+  title = "Müşterilerimiz Ne Diyor?",
+  subtitle = "Güven ve hız konusunda bizimle çalışanlardan kısa notlar.",
+}: {
+  items: CmsTestimonial[];
+  title?: string;
+  subtitle?: string;
+}) {
+  if (!items.length) return null;
+
   return (
     <section className="bg-neutral-50 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mx-auto mb-12 max-w-2xl text-center">
-          <h2 className="text-3xl font-extrabold text-navy sm:text-4xl">
-            Müşterilerimiz Ne Diyor?
-          </h2>
-          <p className="mt-4 text-black/60">
-            Güven ve hız konusunda bizimle çalışanlardan kısa notlar.
-          </p>
+          <h2 className="text-3xl font-extrabold text-navy sm:text-4xl">{title}</h2>
+          <p className="mt-4 text-black/60">{subtitle}</p>
         </div>
 
         <motion.div
@@ -25,9 +31,9 @@ export default function Testimonials() {
           viewport={{ once: true, amount: 0.25 }}
           className="grid grid-cols-1 gap-6 md:grid-cols-3"
         >
-          {TESTIMONIALS.map((item) => (
+          {items.map((item) => (
             <motion.blockquote
-              key={item.name}
+              key={item.id}
               variants={fadeInUp}
               className="flex flex-col border-l-2 border-accent bg-white px-6 py-6"
             >

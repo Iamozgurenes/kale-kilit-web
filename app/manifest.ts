@@ -1,12 +1,15 @@
 import type { MetadataRoute } from "next";
-import { SITE } from "@/lib/constants";
+import { getSiteSettings } from "@/lib/cms/queries";
 
-export default function manifest(): MetadataRoute.Manifest {
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
+export default async function manifest(): Promise<MetadataRoute.Manifest> {
+  const site = await getSiteSettings();
   return {
-    name: SITE.name,
+    name: site.name,
     short_name: "Kale Kilit",
-    description:
-      "Adana çilingir ve anahtarcı: 7/24 acil çilingir, ev-oto-kasa açma, anahtar çoğaltma. Çukurova / Adana.",
+    description: site.defaultSeoDescription,
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

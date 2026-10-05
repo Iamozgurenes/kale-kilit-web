@@ -1,16 +1,22 @@
 import Link from "next/link";
 import LegalPage from "@/components/legal/LegalPage";
-import { SITE } from "@/lib/constants";
-import { createPageMetadata } from "@/lib/seo";
+import LegalHtml from "@/components/legal/LegalHtml";
+import { metadataForPage } from "@/lib/seo";
+import { getPage, getSiteSettings } from "@/lib/cms/queries";
 
-export const metadata = createPageMetadata({
-  title: "KVKK Aydınlatma Metni",
-  description:
-    "Adana çilingir ve anahtarcı firması Kale Kilit KVKK aydınlatma metni. 6698 sayılı Kanun kapsamında kişisel verilerin işlenmesi hakkında bilgilendirme.",
-  path: "/kvkk",
-});
+export async function generateMetadata() {
+  return metadataForPage("kvkk", {
+    title: "KVKK Aydınlatma Metni",
+    description:
+      "Adana çilingir ve anahtarcı firması Kale Kilit KVKK aydınlatma metni. 6698 sayılı Kanun kapsamında kişisel verilerin işlenmesi hakkında bilgilendirme.",
+    path: "/kvkk",
+  });
+}
 
-export default function KvkkPage() {
+export default async function KvkkPage() {
+  const [page, site] = await Promise.all([getPage("kvkk"), getSiteSettings()]);
+  if (page?.body) return <LegalHtml page={page} path="/kvkk" />;
+
   return (
     <LegalPage
       eyebrow="Yasal"
@@ -25,24 +31,24 @@ export default function KvkkPage() {
             <>
               <p>
                 Bu aydınlatma metni, veri sorumlusu sıfatıyla{" "}
-                <strong>{SITE.name}</strong> (“Şirket”) tarafından
+                <strong>{site.name}</strong> (“Şirket”) tarafından
                 hazırlanmıştır.
               </p>
               <ul className="list-disc space-y-1 pl-5">
-                <li>Adres: {SITE.address}</li>
+                <li>Adres: {site.address}</li>
                 <li>
                   Telefon:{" "}
-                  <a href={SITE.phoneHref} className="text-accent-ink hover:underline">
-                    {SITE.phone}
+                  <a href={site.phoneHref} className="text-accent-ink hover:underline">
+                    {site.phone}
                   </a>
                 </li>
                 <li>
                   E-posta:{" "}
                   <a
-                    href={`mailto:${SITE.email}`}
+                    href={`mailto:${site.email}`}
                     className="text-accent-ink hover:underline"
                   >
-                    {SITE.email}
+                    {site.email}
                   </a>
                 </li>
               </ul>
@@ -124,10 +130,10 @@ export default function KvkkPage() {
               <p>
                 Başvurularınızı{" "}
                 <a
-                  href={`mailto:${SITE.email}`}
+                  href={`mailto:${site.email}`}
                   className="text-accent-ink hover:underline"
                 >
-                  {SITE.email}
+                  {site.email}
                 </a>{" "}
                 adresine veya{" "}
                 <Link href="/iletisim" className="text-accent-ink hover:underline">

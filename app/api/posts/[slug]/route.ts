@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
+import { LIVE_CACHE_CONTROL } from "@/lib/cms/live";
 import { getPostBySlug } from "@/lib/posts";
 
-export const runtime = 'edge';
-
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -12,12 +13,21 @@ export async function GET(_request: Request, { params }: Params) {
     const post = await getPostBySlug(slug);
 
     if (!post) {
-      return NextResponse.json({ error: "Yazı bulunamadı" }, { status: 404 });
+      return NextResponse.json(
+        { error: "Yazı bulunamadı" },
+        { status: 404, headers: { "Cache-Control": LIVE_CACHE_CONTROL } },
+      );
     }
 
-    return NextResponse.json({ item: post });
+    return NextResponse.json(
+      { item: post },
+      { headers: { "Cache-Control": LIVE_CACHE_CONTROL } },
+    );
   } catch (error) {
     console.error("[api/posts/slug]", error);
-    return NextResponse.json({ error: "Yazı alınamadı" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Yazı alınamadı" },
+      { status: 500, headers: { "Cache-Control": LIVE_CACHE_CONTROL } },
+    );
   }
 }

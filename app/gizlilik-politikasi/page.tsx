@@ -1,16 +1,22 @@
 import Link from "next/link";
 import LegalPage from "@/components/legal/LegalPage";
-import { SITE } from "@/lib/constants";
-import { createPageMetadata } from "@/lib/seo";
+import LegalHtml from "@/components/legal/LegalHtml";
+import { metadataForPage } from "@/lib/seo";
+import { getPage, getSiteSettings } from "@/lib/cms/queries";
 
-export const metadata = createPageMetadata({
-  title: "Gizlilik Politikası",
-  description:
-    "Adana çilingir Kale Kilit gizlilik politikası: web sitesi ziyaretinde ve hizmetlerde kişisel verilerin korunmasına ilişkin bilgilendirme.",
-  path: "/gizlilik-politikasi",
-});
+export async function generateMetadata() {
+  return metadataForPage("privacy", {
+    title: "Gizlilik Politikası",
+    description:
+      "Adana çilingir Kale Kilit gizlilik politikası: web sitesi ziyaretinde ve hizmetlerde kişisel verilerin korunmasına ilişkin bilgilendirme.",
+    path: "/gizlilik-politikasi",
+  });
+}
 
-export default function PrivacyPage() {
+export default async function PrivacyPage() {
+  const [page, site] = await Promise.all([getPage("privacy"), getSiteSettings()]);
+  if (page?.body) return <LegalHtml page={page} path="/gizlilik-politikasi" />;
+
   return (
     <LegalPage
       eyebrow="Yasal"
@@ -23,7 +29,7 @@ export default function PrivacyPage() {
           title: "1. Kapsam",
           content: (
             <p>
-              Bu politika, {SITE.name} tarafından işletilen web sitesi ve ilgili
+              Bu politika, {site.name} tarafından işletilen web sitesi ve ilgili
               dijital kanallar üzerinden toplanan bilgilere uygulanır. KVKK
               kapsamındaki ayrıntılı bilgilendirme için{" "}
               <Link href="/kvkk" className="text-accent-ink hover:underline">
@@ -81,10 +87,10 @@ export default function PrivacyPage() {
             <p>
               Gizlilik politikamızla ilgili sorularınız için{" "}
               <a
-                href={`mailto:${SITE.email}`}
+                href={`mailto:${site.email}`}
                 className="text-accent-ink hover:underline"
               >
-                {SITE.email}
+                {site.email}
               </a>{" "}
               veya{" "}
               <Link href="/iletisim" className="text-accent-ink hover:underline">

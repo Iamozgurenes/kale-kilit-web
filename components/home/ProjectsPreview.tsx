@@ -5,10 +5,11 @@ import { ArrowRight } from "lucide-react";
 import ProjectCard from "@/components/ui/ProjectCard";
 import Button from "@/components/ui/Button";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
-import { PROJECTS } from "@/lib/data/projects";
+import type { CmsProject } from "@/lib/cms/types";
 
-export default function ProjectsPreview() {
-  const featured = PROJECTS.slice(0, 3);
+export default function ProjectsPreview({ items }: { items: CmsProject[] }) {
+  const featured = items.slice(0, 3);
+  if (!featured.length) return null;
 
   return (
     <section className="bg-white py-20 sm:py-28">
@@ -40,7 +41,7 @@ export default function ProjectsPreview() {
           className="grid grid-cols-1 gap-6 md:grid-cols-3"
         >
           {featured.map((project) => (
-            <motion.div key={project.title} variants={fadeInUp}>
+            <motion.div key={project.id} variants={fadeInUp}>
               <ProjectCard {...project} />
             </motion.div>
           ))}

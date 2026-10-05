@@ -5,16 +5,18 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, PhoneCall, Wrench } from "lucide-react";
 import Button from "@/components/ui/Button";
-import { SITE } from "@/lib/constants";
-import { HERO_SLIDES } from "@/lib/data/hero";
+import type { HeroSlide } from "@/lib/cms/types";
+import { useSite } from "@/lib/site-context";
 
 const AUTOPLAY_MS = 6000;
 
-export default function Hero() {
+export default function Hero({ slides }: { slides: HeroSlide[] }) {
+  const site = useSite();
+  const items = slides;
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
-  const slide = HERO_SLIDES[index];
-  const total = HERO_SLIDES.length;
+  const slide = items[index] ?? items[0];
+  const total = items.length;
 
   const goTo = useCallback(
     (next: number) => {
@@ -27,10 +29,12 @@ export default function Hero() {
   const prev = useCallback(() => goTo(index - 1), [goTo, index]);
 
   useEffect(() => {
-    if (paused) return;
+    if (paused || total < 2) return;
     const id = window.setInterval(next, AUTOPLAY_MS);
     return () => window.clearInterval(id);
-  }, [next, paused]);
+  }, [next, paused, total]);
+
+  if (!slide) return null;
 
   return (
     <section
@@ -82,7 +86,7 @@ export default function Hero() {
             className="max-w-2xl"
           >
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent sm:text-sm">
-              {SITE.name}
+              {site.name}
             </p>
 
             <h1 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl md:text-5xl">
@@ -97,7 +101,7 @@ export default function Hero() {
 
             <div className="mt-7 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
               <Button
-                href={SITE.phoneHref}
+                href={site.phoneHref}
                 variant="primary"
                 className="w-full sm:w-auto"
               >
@@ -118,7 +122,7 @@ export default function Hero() {
 
         <div className="mt-8 flex items-center gap-4">
           <div className="flex items-center gap-2" role="tablist" aria-label="Slaytlar">
-            {HERO_SLIDES.map((item, i) => (
+            {items.map((item, i) => (
               <button
                 key={item.id}
                 type="button"

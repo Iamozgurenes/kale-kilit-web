@@ -2,10 +2,13 @@
 
 import type { FormEvent } from "react";
 import { MessageCircle } from "lucide-react";
-import { SITE } from "@/lib/constants";
+import PocketBase from "pocketbase";
+import { useSite } from "@/lib/site-context";
 
 export default function ContactForm() {
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const site = useSite();
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
     const data = new FormData(form);
@@ -15,8 +18,24 @@ export default function ContactForm() {
     const subject = String(data.get("subject") ?? "").trim();
     const message = String(data.get("message") ?? "").trim();
 
+    try {
+      const pb = new PocketBase(
+        process.env.NEXT_PUBLIC_POCKETBASE_URL ?? "https://db.kalekilitadana.com",
+      );
+      pb.autoCancellation(false);
+      await pb.collection("contact_messages").create({
+        name,
+        phone,
+        subject,
+        message,
+        is_read: false,
+      });
+    } catch {
+      // WhatsApp fallback still works if the inbox save fails.
+    }
+
     const lines = [
-      "Merhaba, Kale Kilit & Çilingir web sitesinden yazıyorum.",
+      `Merhaba, ${site.name} web sitesinden yazıyorum.`,
       "",
       `Ad Soyad: ${name}`,
       `Telefon: ${phone}`,
@@ -26,7 +45,7 @@ export default function ContactForm() {
       message,
     ].filter((line) => line !== null);
 
-    const url = `https://wa.me/${SITE.whatsappNumber}?text=${encodeURIComponent(lines.join("\n"))}`;
+    const url = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(lines.join("\n"))}`;
     window.open(url, "_blank", "noopener,noreferrer");
   };
 

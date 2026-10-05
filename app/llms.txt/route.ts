@@ -1,19 +1,25 @@
 import { NextResponse } from "next/server";
-import { SITE } from "@/lib/constants";
+import { LIVE_CACHE_CONTROL } from "@/lib/cms/live";
+import { getAuthorizedBrands, getSiteSettings } from "@/lib/cms/queries";
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
-export function GET() {
-  const base = SITE.url.replace(/\/$/, "");
+export async function GET() {
+  const [site, brands] = await Promise.all([getSiteSettings(), getAuthorizedBrands()]);
+  const base = site.url.replace(/\/$/, "");
+  const brandLines = brands
+    .map((brand) => `- [${brand.shortTitle}](${base}/yetkili-servis/${brand.slug})`)
+    .join("\n");
 
-  const body = `# ${SITE.name}
+  const body = `# ${site.name}
 
 > Adana çilingir ve anahtarcı — 7/24 acil çilingir, ev-oto-kasa açma, anahtar çoğaltma ve kilit değişimi.
 
 Site: ${base}
-Telefon: ${SITE.phone}
-E-posta: ${SITE.email}
-Adres: ${SITE.address}
+Telefon: ${site.phone}
+E-posta: ${site.email}
+Adres: ${site.address}
 
 ## Anahtar Kelimeler
 
@@ -24,11 +30,8 @@ Adana çilingir, Adana anahtarcı, Adana acil çilingir, Çukurova çilingir, ot
 - [Anasayfa](${base}/): Adana çilingir & anahtarcı — acil hizmet özeti
 - [Hakkımızda](${base}/hakkimizda): Adana çilingir firması hikayesi ve hizmet bölgeleri
 - [Hizmetler](${base}/hizmetler): Adana çilingirlik ve anahtarcılık hizmetleri
-- [Yetkili Servis](${base}/yetkili-servis): Kale Kilit, Multlock, Desi, Dortek kapı yetkili servis
-- [Kale Kilit Yetkili Servis](${base}/yetkili-servis/adana-kale-kilit-yetkili-servis)
-- [Multlock Yetkili Servis](${base}/yetkili-servis/adana-multlock-yetkili-servis)
-- [Desi Yetkili Servis](${base}/yetkili-servis/adana-desi-yetkili-servis)
-- [Dortek Kapı Yetkili Servis](${base}/yetkili-servis/adana-dortek-kapi-yetkili-servis)
+- [Yetkili Servis](${base}/yetkili-servis): Marka yetkili servisler
+${brandLines}
 - [Projeler](${base}/projeler): Adana’da tamamlanan iş örnekleri
 - [Blog](${base}/blog): Adana çilingir rehber yazıları
 - [SSS](${base}/sss): Adana çilingir sıkça sorulan sorular
@@ -50,15 +53,15 @@ Adana çilingir, Adana anahtarcı, Adana acil çilingir, Çukurova çilingir, ot
 
 ## Notlar
 
-- Hizmet alanı: Adana (Çukurova, Seyhan, Yüreğir, Sarıçam ve çevre ilçeler)
-- Çalışma: 7/24 kesintisiz acil destek
+- Hizmet alanı: Adana (${site.serviceAreas.join(", ")})
+- Çalışma: ${site.workingHours}
 - İletişim önceliği: telefon ve WhatsApp
 `;
 
   return new NextResponse(body, {
     headers: {
       "Content-Type": "text/plain; charset=utf-8",
-      "Cache-Control": "public, max-age=3600",
+      "Cache-Control": LIVE_CACHE_CONTROL,
     },
   });
 }

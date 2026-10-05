@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
+import { LIVE_CACHE_CONTROL } from "@/lib/cms/live";
 import { getPostCategories, getPosts } from "@/lib/posts";
 
-
-export const runtime = 'edge';
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export async function GET(request: Request) {
   try {
@@ -20,15 +21,18 @@ export async function GET(request: Request) {
       withCategories ? getPostCategories() : Promise.resolve(undefined),
     ]);
 
-    return NextResponse.json({
-      items,
-      ...(categories ? { categories } : {}),
-    });
+    return NextResponse.json(
+      {
+        items,
+        ...(categories ? { categories } : {}),
+      },
+      { headers: { "Cache-Control": LIVE_CACHE_CONTROL } },
+    );
   } catch (error) {
     console.error("[api/posts]", error);
     return NextResponse.json(
       { error: "Yazılar alınamadı", items: [], categories: ["Tümü"] },
-      { status: 500 },
+      { status: 500, headers: { "Cache-Control": LIVE_CACHE_CONTROL } },
     );
   }
 }

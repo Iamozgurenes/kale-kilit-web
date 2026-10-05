@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { Home, PhoneCall, RotateCcw } from "lucide-react";
 import Button from "@/components/ui/Button";
-import { SITE } from "@/lib/constants";
+import { useSite } from "@/lib/site-context";
 
 export default function Error({
   error,
@@ -13,6 +13,7 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  const site = useSite();
   useEffect(() => {
     console.error(error);
   }, [error]);
@@ -49,7 +50,7 @@ export default function Error({
             <Home className="h-5 w-5" />
             Ana Sayfa
           </Button>
-          <Button href={SITE.phoneHref} variant="secondary">
+          <Button href={site.phoneHref} variant="secondary">
             <PhoneCall className="h-5 w-5" />
             Hemen Ara
           </Button>

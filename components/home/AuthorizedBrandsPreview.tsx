@@ -4,10 +4,12 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, BadgeCheck } from "lucide-react";
 import Button from "@/components/ui/Button";
-import { AUTHORIZED_BRANDS } from "@/lib/data/authorized-brands";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { getIcon } from "@/lib/icons";
+import { useBrands } from "@/lib/site-context";
 
 export default function AuthorizedBrandsPreview() {
+  const brands = useBrands();
   return (
     <section className="bg-white py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -31,8 +33,8 @@ export default function AuthorizedBrandsPreview() {
           viewport={{ once: true, amount: 0.2 }}
           className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
         >
-          {AUTHORIZED_BRANDS.map((brand) => {
-            const Icon = brand.icon;
+          {brands.map((brand) => {
+            const Icon = getIcon(brand.icon);
             return (
               <motion.div key={brand.slug} variants={fadeInUp}>
                 <Link

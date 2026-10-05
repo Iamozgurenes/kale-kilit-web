@@ -2,23 +2,24 @@
 
 import { useMemo, useState } from "react";
 import Accordion from "@/components/ui/Accordion";
-import { FAQ_CATEGORIES, FAQS } from "@/lib/data/faq";
+import type { CmsFaq } from "@/lib/cms/types";
 
-export default function FaqSections() {
+export default function FaqSections({ items }: { items: CmsFaq[] }) {
+  const categories = useMemo(
+    () => ["Tümü", ...Array.from(new Set(items.map((item) => item.category))).filter(Boolean)],
+    [items],
+  );
   const [category, setCategory] = useState("Tümü");
 
-  const items = useMemo(() => {
-    const list =
-      category === "Tümü"
-        ? FAQS
-        : FAQS.filter((item) => item.category === category);
+  const visible = useMemo(() => {
+    const list = category === "Tümü" ? items : items.filter((item) => item.category === category);
     return list.map(({ question, answer }) => ({ question, answer }));
-  }, [category]);
+  }, [category, items]);
 
   return (
     <div>
       <div className="mb-10 flex flex-wrap justify-center gap-2">
-        {FAQ_CATEGORIES.map((item) => {
+        {categories.map((item) => {
           const active = item === category;
           return (
             <button
@@ -37,7 +38,7 @@ export default function FaqSections() {
         })}
       </div>
 
-      <Accordion key={category} items={items} />
+      <Accordion key={category} items={visible} />
     </div>
   );
 }

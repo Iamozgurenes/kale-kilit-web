@@ -1,64 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, PhoneCall } from "lucide-react";
 import Button from "@/components/ui/Button";
-import { apiGet } from "@/lib/api-client";
 import { getServiceIcon } from "@/lib/icons";
-import { SITE } from "@/lib/constants";
+import { useSite } from "@/lib/site-context";
 import type { Service } from "@/lib/types/content";
 
-export default function ServicesGallery() {
-  const [services, setServices] = useState<Service[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    let cancelled = false;
-
-    async function load() {
-      setLoading(true);
-      setError(null);
-      try {
-        const data = await apiGet<{ items: Service[] }>("/api/services");
-        if (!cancelled) setServices(data.items);
-      } catch {
-        if (!cancelled) setError("Hizmetler yüklenemedi.");
-      } finally {
-        if (!cancelled) setLoading(false);
-      }
-    }
-
-    void load();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {Array.from({ length: 6 }).map((_, i) => (
-          <div
-            key={i}
-            className="overflow-hidden rounded-2xl border border-black/5 bg-white"
-          >
-            <div className="aspect-[16/10] animate-pulse bg-neutral-100" />
-            <div className="space-y-3 p-5">
-              <div className="h-4 w-2/3 animate-pulse rounded bg-neutral-100" />
-              <div className="h-3 w-full animate-pulse rounded bg-neutral-100" />
-            </div>
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  if (error) {
-    return <p className="text-center text-sm text-red-600">{error}</p>;
-  }
+export default function ServicesGallery({ services }: { services: Service[] }) {
+  const site = useSite();
 
   if (services.length === 0) {
     return (
@@ -136,7 +87,7 @@ export default function ServicesGallery() {
                   Detayı Gör
                   <ArrowRight className="h-4 w-4" />
                 </Button>
-                <Button href={SITE.phoneHref} variant="primary">
+                <Button href={site.phoneHref} variant="primary">
                   <PhoneCall className="h-4 w-4" />
                   Ara
                 </Button>

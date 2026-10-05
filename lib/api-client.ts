@@ -1,6 +1,7 @@
 /** Browser-side helper: always call our Next.js API routes (not PocketBase). */
 export async function apiGet<T>(path: string): Promise<T> {
   const res = await fetch(path, {
+    cache: "no-store",
     headers: { Accept: "application/json" },
   });
 

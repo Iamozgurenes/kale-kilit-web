@@ -1,16 +1,22 @@
 import Link from "next/link";
 import LegalPage from "@/components/legal/LegalPage";
-import { SITE } from "@/lib/constants";
-import { createPageMetadata } from "@/lib/seo";
+import LegalHtml from "@/components/legal/LegalHtml";
+import { metadataForPage } from "@/lib/seo";
+import { getPage, getSiteSettings } from "@/lib/cms/queries";
 
-export const metadata = createPageMetadata({
-  title: "Çerez Politikası",
-  description:
-    "Adana çilingir Kale Kilit web sitesinde kullanılan çerezler, amaçları ve tercihlerinizi yönetme hakkında bilgilendirme.",
-  path: "/cerez-politikasi",
-});
+export async function generateMetadata() {
+  return metadataForPage("cookies", {
+    title: "Çerez Politikası",
+    description:
+      "Adana çilingir Kale Kilit web sitesinde kullanılan çerezler, amaçları ve tercihlerinizi yönetme hakkında bilgilendirme.",
+    path: "/cerez-politikasi",
+  });
+}
 
-export default function CookiePolicyPage() {
+export default async function CookiePolicyPage() {
+  const [page, site] = await Promise.all([getPage("cookies"), getSiteSettings()]);
+  if (page?.body) return <LegalHtml page={page} path="/cerez-politikasi" />;
+
   return (
     <LegalPage
       eyebrow="Yasal"
@@ -74,10 +80,10 @@ export default function CookiePolicyPage() {
             <p>
               Çerez politikası hakkında sorularınız için{" "}
               <a
-                href={`mailto:${SITE.email}`}
+                href={`mailto:${site.email}`}
                 className="text-accent-ink hover:underline"
               >
-                {SITE.email}
+                {site.email}
               </a>{" "}
               adresine yazabilir veya{" "}
               <Link href="/kvkk" className="text-accent-ink hover:underline">

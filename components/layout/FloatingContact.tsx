@@ -1,10 +1,11 @@
 "use client";
 
 import { MessageCircle, PhoneCall } from "lucide-react";
-import { SITE } from "@/lib/constants";
 import { useHasCookieConsent } from "@/lib/useCookieConsent";
+import { useSite } from "@/lib/site-context";
 
 export default function FloatingContact() {
+  const site = useSite();
   const lifted = !useHasCookieConsent();
 
   return (
@@ -14,7 +15,7 @@ export default function FloatingContact() {
       }`}
     >
       <a
-        href={SITE.whatsappHref}
+        href={site.whatsappHref}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp ile yazın"
@@ -24,8 +25,8 @@ export default function FloatingContact() {
       </a>
 
       <a
-        href={SITE.phoneHref}
-        aria-label={`Hemen ara: ${SITE.phone}`}
+        href={site.phoneHref}
+        aria-label={`Hemen ara: ${site.phone}`}
         className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-accent text-navy shadow-lg shadow-accent/30 transition hover:-translate-y-0.5 hover:bg-accent/90 active:scale-95"
       >
         <PhoneCall className="h-6 w-6" />

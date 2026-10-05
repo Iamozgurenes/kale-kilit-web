@@ -1,15 +1,19 @@
 import type { MetadataRoute } from "next";
-import { SITE } from "@/lib/constants";
+import { getSiteSettings } from "@/lib/cms/queries";
 
-export default function robots(): MetadataRoute.Robots {
-  const base = SITE.url.replace(/\/$/, "");
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
+export default async function robots(): Promise<MetadataRoute.Robots> {
+  const site = await getSiteSettings();
+  const base = site.url.replace(/\/$/, "");
 
   return {
     rules: [
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/"],
+        disallow: ["/api/", "/admin/"],
       },
       {
         userAgent: "GPTBot",

@@ -2,24 +2,44 @@ import Link from "next/link";
 import { ArrowRight, BadgeCheck, PhoneCall } from "lucide-react";
 import PageHeader from "@/components/ui/PageHeader";
 import Button from "@/components/ui/Button";
-import { AUTHORIZED_BRANDS } from "@/lib/data/authorized-brands";
-import { SITE } from "@/lib/constants";
-import { createPageMetadata } from "@/lib/seo";
+import { metadataForPage } from "@/lib/seo";
+import { getAuthorizedBrands, getPage, getSiteSettings } from "@/lib/cms/queries";
+import { pageContent } from "@/lib/cms/types";
+import { getIcon } from "@/lib/icons";
 
-export const metadata = createPageMetadata({
-  title: "Yetkili Servis",
-  description:
-    "Adana yetkili servis: Kale Kilit, Multlock, Desi ve Dortek kapı yetkili servis. Kilit değişimi, anahtar çoğaltma ve 7/24 acil destek.",
-  path: "/yetkili-servis",
-});
+export async function generateMetadata() {
+  return metadataForPage("authorized", {
+    title: "Yetkili Servis",
+    description:
+      "Adana yetkili servis: Kale Kilit, Multlock, Desi ve Dortek kapı yetkili servis. Kilit değişimi, anahtar çoğaltma ve 7/24 acil destek.",
+    path: "/yetkili-servis",
+  });
+}
 
-export default function AuthorizedServicesPage() {
+export default async function AuthorizedServicesPage() {
+  const [page, brands, site] = await Promise.all([
+    getPage("authorized"),
+    getAuthorizedBrands(),
+    getSiteSettings(),
+  ]);
+  const content = pageContent(page, {
+    list_title: "Servisini Yaptığımız Markalar",
+    list_subtitle:
+      "Her marka için ayrı detay sayfası hazırladık. İhtiyacınıza uygun yetkili servisi seçerek hızlıca iletişime geçebilirsiniz.",
+    cta_eyebrow: "Acil Destek",
+    cta_title: "Yetkili servis için hemen arayın",
+    cta_text: "Adana genelinde 7/24 hızlı müdahale.",
+  });
+
   return (
     <>
       <PageHeader
-        eyebrow="Yetkili Servis"
-        title="Marka Yetkili Servislerimiz"
-        description="Kale Kilit, Multlock, Desi ve Dortek kapı yetkili servis noktalarımızla Adana genelinde orijinal parça ve uzman müdahale sunuyoruz."
+        eyebrow={page?.eyebrow || "Yetkili Servis"}
+        title={page?.title || "Marka Yetkili Servislerimiz"}
+        description={
+          page?.description ||
+          "Kale Kilit, Multlock, Desi ve Dortek kapı yetkili servis noktalarımızla Adana genelinde orijinal parça ve uzman müdahale sunuyoruz."
+        }
         path="/yetkili-servis"
       />
 
@@ -27,17 +47,14 @@ export default function AuthorizedServicesPage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mb-10 max-w-2xl">
             <h2 className="text-2xl font-extrabold text-navy sm:text-3xl">
-              Servisini Yaptığımız Markalar
+              {String(content.list_title)}
             </h2>
-            <p className="mt-3 text-black/60">
-              Her marka için ayrı detay sayfası hazırladık. İhtiyacınıza uygun
-              yetkili servisi seçerek hızlıca iletişime geçebilirsiniz.
-            </p>
+            <p className="mt-3 text-black/60">{String(content.list_subtitle)}</p>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2">
-            {AUTHORIZED_BRANDS.map((brand) => {
-              const Icon = brand.icon;
+            {brands.map((brand) => {
+              const Icon = getIcon(brand.icon);
               return (
                 <Link
                   key={brand.slug}
@@ -73,18 +90,14 @@ export default function AuthorizedServicesPage() {
           <div className="mt-12 flex flex-col items-start justify-between gap-5 rounded-3xl bg-navy p-7 sm:flex-row sm:items-center sm:p-8">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
-                Acil Destek
+                {String(content.cta_eyebrow)}
               </p>
-              <h3 className="mt-2 text-xl font-bold text-white">
-                Yetkili servis için hemen arayın
-              </h3>
-              <p className="mt-2 text-sm text-white/65">
-                Adana genelinde 7/24 hızlı müdahale.
-              </p>
+              <h3 className="mt-2 text-xl font-bold text-white">{String(content.cta_title)}</h3>
+              <p className="mt-2 text-sm text-white/65">{String(content.cta_text)}</p>
             </div>
-            <Button href={SITE.phoneHref} variant="primary">
+            <Button href={site.phoneHref} variant="primary">
               <PhoneCall className="h-5 w-5" />
-              {SITE.phone}
+              {site.phone}
             </Button>
           </div>
         </div>

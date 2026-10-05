@@ -5,23 +5,19 @@ import Link from "next/link";
 import { ArrowLeft, CheckCircle2, PhoneCall } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { getServiceBySlug, getServices } from "@/lib/services";
-import { ICON_MAP, DefaultServiceIcon } from "@/lib/icons";
-import { SITE } from "@/lib/constants";
+import { getServiceIcon, DefaultServiceIcon } from "@/lib/icons";
+import { getSiteSettings } from "@/lib/cms/queries";
 import { createPageMetadata } from "@/lib/seo";
 import { getBannerImage } from "@/lib/banner";
 
 type Props = { params: Promise<{ slug: string }> };
 
-export async function generateStaticParams() {
-  const services = await getServices().catch(() => []);
-  return services.map((service) => ({ slug: service.slug }));
-}
-
-export const dynamicParams = false;
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const service = await getServiceBySlug(slug).catch(() => null);
+  const [service, site] = await Promise.all([
+    getServiceBySlug(slug).catch(() => null),
+    getSiteSettings(),
+  ]);
   if (!service) return { title: "Hizmet | Kale Kilit & Çilingir" };
 
   return createPageMetadata({
@@ -31,15 +27,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       `${service.shortDescription} Adana çilingir ve anahtarcı hizmeti — 7/24 acil müdahale.`,
     path: `/hizmetler/${slug}`,
     image: service.coverImage || undefined,
+    site,
   });
 }
 
 export default async function ServiceDetailPage({ params }: Props) {
   const { slug } = await params;
-  const service = await getServiceBySlug(slug).catch(() => null);
+  const [service, site] = await Promise.all([
+    getServiceBySlug(slug).catch(() => null),
+    getSiteSettings(),
+  ]);
   if (!service) notFound();
 
-  const Icon = (service.icon && ICON_MAP[service.icon]) || DefaultServiceIcon;
+  const Icon = getServiceIcon(service.icon) || DefaultServiceIcon;
   const others = (await getServices().catch(() => []))
     .filter((item) => item.id !== service.id)
     .slice(0, 3);
@@ -139,9 +139,9 @@ export default async function ServiceDetailPage({ params }: Props) {
                   Adana genelinde hızlı müdahale. Net fiyat, hasarsız çözüm.
                 </p>
                 <div className="mt-6 flex flex-col gap-3">
-                  <Button href={SITE.phoneHref} variant="primary" className="w-full">
+                  <Button href={site.phoneHref} variant="primary" className="w-full">
                     <PhoneCall className="h-5 w-5" />
-                    {SITE.phone}
+                    {site.phone}
                   </Button>
                   <Button
                     href="/iletisim"
@@ -163,7 +163,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             <h2 className="text-2xl font-extrabold text-navy">Diğer Hizmetler</h2>
             <div className="mt-8 grid gap-5 sm:grid-cols-3">
               {others.map((item) => {
-                const OtherIcon = (item.icon && ICON_MAP[item.icon]) || DefaultServiceIcon;
+                const OtherIcon = getServiceIcon(item.icon) || DefaultServiceIcon;
                 return (
                   <Link
                     key={item.id}

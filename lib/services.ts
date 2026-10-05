@@ -1,7 +1,9 @@
+import { cache } from "react";
 import type PocketBase from "pocketbase";
 import type { RecordModel } from "pocketbase";
 import { createPocketBase } from "@/lib/pocketbase";
 import { pbEquals } from "@/lib/pb-filter";
+import { ensureLive } from "@/lib/cms/live";
 import type { Service } from "@/lib/types/content";
 
 type ServiceRecord = RecordModel & {
@@ -73,18 +75,20 @@ function mapService(pb: PocketBase, record: ServiceRecord): Service {
   };
 }
 
-export async function getServices(options?: {
+export const getServices = cache(async (options?: {
   limit?: number;
-}): Promise<Service[]> {
+}): Promise<Service[]> => {
+  await ensureLive();
   const pb = createPocketBase();
   const result = await pb.collection("services").getList<ServiceRecord>(1, options?.limit ?? 50, {
     filter: "is_active = true",
     sort: "sort_order,title",
   });
   return result.items.map((record) => mapService(pb, record));
-}
+});
 
-export async function getServiceBySlug(slug: string): Promise<Service | null> {
+export const getServiceBySlug = cache(async (slug: string): Promise<Service | null> => {
+  await ensureLive();
   const pb = createPocketBase();
   try {
     const record = await pb
@@ -96,4 +100,4 @@ export async function getServiceBySlug(slug: string): Promise<Service | null> {
   } catch {
     return null;
   }
-}
+});

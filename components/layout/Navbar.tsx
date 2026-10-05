@@ -7,13 +7,15 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, PhoneCall, X } from "lucide-react";
-import { NAV_LINKS, SITE } from "@/lib/constants";
+import { NAV_LINKS } from "@/lib/constants";
+import { useSite } from "@/lib/site-context";
 
 function isActivePath(pathname: string, href: string) {
   return href === "/" ? pathname === "/" : pathname.startsWith(href);
 }
 
 export default function Navbar() {
+  const site = useSite();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -149,11 +151,11 @@ export default function Navbar() {
                 className="mt-auto pt-10 pb-6"
               >
                 <a
-                  href={SITE.phoneHref}
+                  href={site.phoneHref}
                   className="flex w-full items-center justify-center gap-3 rounded-2xl bg-accent px-5 py-4 text-base font-bold text-navy transition hover:bg-accent/90"
                 >
                   <PhoneCall className="h-5 w-5" />
-                  Acil Destek · {SITE.phone}
+                  Acil Destek · {site.phone}
                 </a>
                 <p className="mt-4 text-center text-xs text-navy/65">
                   7/24 kesintisiz çilingir hizmeti
@@ -234,7 +236,7 @@ export default function Navbar() {
 
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <a
-              href={SITE.phoneHref}
+              href={site.phoneHref}
               className="hidden items-center gap-2.5 rounded-xl bg-accent px-3 py-2 text-navy transition hover:bg-accent/90 active:scale-[0.98] xl:flex xl:gap-3 xl:px-3.5"
             >
               <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-navy/10">
@@ -245,14 +247,14 @@ export default function Navbar() {
                   Acil Destek
                 </span>
                 <span className="mt-0.5 text-sm font-bold tabular-nums">
-                  {SITE.phone}
+                  {site.phone}
                 </span>
               </span>
             </a>
 
             <a
-              href={SITE.phoneHref}
-              aria-label={`Hemen ara: ${SITE.phone}`}
+              href={site.phoneHref}
+              aria-label={`Hemen ara: ${site.phone}`}
               className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent text-navy transition hover:bg-accent/90 active:scale-[0.98] xl:hidden"
             >
               <PhoneCall className="h-5 w-5" />

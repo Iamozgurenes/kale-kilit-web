@@ -3,22 +3,28 @@
 import { ArrowRight } from "lucide-react";
 import Accordion from "@/components/ui/Accordion";
 import Button from "@/components/ui/Button";
-import { FAQS } from "@/lib/data/faq";
+import type { CmsFaq } from "@/lib/cms/types";
 
-export default function FaqPreview() {
+export default function FaqPreview({
+  items,
+  title = "Sıkça Sorulan Sorular",
+  subtitle = "Ulaşım süresi, fiyat ve hasarsız açılış hakkında en çok sorulanlar.",
+}: {
+  items: CmsFaq[];
+  title?: string;
+  subtitle?: string;
+}) {
+  if (!items.length) return null;
+
   return (
     <section className="bg-white py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mx-auto mb-12 max-w-2xl text-center">
-          <h2 className="text-3xl font-extrabold text-navy sm:text-4xl">
-            Sıkça Sorulan Sorular
-          </h2>
-          <p className="mt-4 text-black/60">
-            Ulaşım süresi, fiyat ve hasarsız açılış hakkında en çok sorulanlar.
-          </p>
+          <h2 className="text-3xl font-extrabold text-navy sm:text-4xl">{title}</h2>
+          <p className="mt-4 text-black/60">{subtitle}</p>
         </div>
 
-        <Accordion items={FAQS.slice(0, 4)} />
+        <Accordion items={items.slice(0, 4)} />
 
         <div className="mt-10 flex justify-center">
           <Button

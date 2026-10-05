@@ -1,14 +1,18 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, MapPin, MessageCircle, PhoneCall } from "lucide-react";
 import { LEGAL_LINKS } from "@/lib/data/legal";
-import { AUTHORIZED_BRANDS } from "@/lib/data/authorized-brands";
-import { NAV_LINKS, SITE } from "@/lib/constants";
+import { NAV_LINKS } from "@/lib/constants";
 import FooterServices from "@/components/layout/FooterServices";
+import { useBrands, useSite } from "@/lib/site-context";
 
 const FOOTER_NAV = NAV_LINKS.filter((link) => link.href !== "/");
 
 export default function Footer() {
+  const site = useSite();
+  const brands = useBrands();
   return (
     <footer className="relative overflow-hidden bg-navy text-white">
       <div
@@ -32,14 +36,14 @@ export default function Footer() {
           </div>
           <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
             <a
-              href={SITE.phoneHref}
+              href={site.phoneHref}
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3.5 text-sm font-bold text-navy transition hover:bg-accent/90"
             >
               <PhoneCall className="h-4 w-4" />
-              {SITE.phone}
+              {site.phone}
             </a>
             <a
-              href={SITE.whatsappHref}
+              href={site.whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-white/10 px-5 py-3.5 text-sm font-semibold text-white ring-1 ring-inset ring-white/15 transition hover:bg-white/15"
@@ -77,29 +81,28 @@ export default function Footer() {
           </Link>
 
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/60">
-            Adana genelinde ev, oto ve kasa çilingirliği ile güvenlik
-            sistemlerinde hızlı, hasarsız ve şeffaf hizmet.
+            {site.footerTagline}
           </p>
 
           <ul className="mt-6 space-y-3 text-sm text-white/65">
             <li className="flex items-start gap-3">
               <PhoneCall className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-              <a href={SITE.phoneHref} className="transition hover:text-accent">
-                {SITE.phone}
+              <a href={site.phoneHref} className="transition hover:text-accent">
+                {site.phone}
               </a>
             </li>
             <li className="flex items-start gap-3">
               <Mail className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
               <a
-                href={`mailto:${SITE.email}`}
+                href={`mailto:${site.email}`}
                 className="transition hover:text-accent"
               >
-                {SITE.email}
+                {site.email}
               </a>
             </li>
             <li className="flex items-start gap-3">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-              <span>{SITE.address}</span>
+              <span>{site.address}</span>
             </li>
           </ul>
         </div>
@@ -131,7 +134,7 @@ export default function Footer() {
             Yetkili Servis
           </h3>
           <ul className="mt-4">
-            {AUTHORIZED_BRANDS.map((brand) => (
+            {brands.map((brand) => (
               <li key={brand.slug}>
                 <Link
                   href={`/yetkili-servis/${brand.slug}`}
@@ -166,7 +169,7 @@ export default function Footer() {
       <div className="relative border-t border-white/10">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-6 text-center sm:flex-row sm:px-6 sm:text-left">
           <p className="text-sm text-white/65">
-            © {new Date().getFullYear()} {SITE.name}. Tüm hakları saklıdır.
+            © {new Date().getFullYear()} {site.name}. Tüm hakları saklıdır.
           </p>
           <p className="text-xs text-white/60">
             Adana · Çukurova · 7/24 Çilingir Hizmeti

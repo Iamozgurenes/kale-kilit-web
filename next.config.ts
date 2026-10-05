@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: "app-kale-kilit-db.pjyhpm.easypanel.host",
         pathname: "/api/files/**",
       },
+      {
+        protocol: "https",
+        hostname: "db.kalekilitadana.com",
+        pathname: "/api/files/**",
+      },
     ],
   },
 };

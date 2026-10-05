@@ -2,19 +2,18 @@
 
 import { useState } from "react";
 import ProjectCard from "@/components/ui/ProjectCard";
-import { PROJECT_CATEGORIES, PROJECTS } from "@/lib/data/projects";
+import type { CmsProject } from "@/lib/cms/types";
 
-export default function ProjectGallery() {
+export default function ProjectGallery({ items }: { items: CmsProject[] }) {
+  const categories = ["Tümü", ...Array.from(new Set(items.map((item) => item.category))).filter(Boolean)];
   const [category, setCategory] = useState("Tümü");
   const filtered =
-    category === "Tümü"
-      ? PROJECTS
-      : PROJECTS.filter((project) => project.category === category);
+    category === "Tümü" ? items : items.filter((project) => project.category === category);
 
   return (
     <div>
       <div className="mb-10 flex flex-wrap gap-2">
-        {PROJECT_CATEGORIES.map((item) => {
+        {categories.map((item) => {
           const active = item === category;
           return (
             <button
@@ -35,7 +34,7 @@ export default function ProjectGallery() {
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((project) => (
-          <ProjectCard key={project.title} {...project} />
+          <ProjectCard key={project.id} {...project} />
         ))}
       </div>
     </div>

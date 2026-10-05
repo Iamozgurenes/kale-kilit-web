@@ -2,15 +2,12 @@
 
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import type { CmsBlock } from "@/lib/cms/types";
 
-const STATS = [
-  { value: "10+", label: "Yıllık Tecrübe" },
-  { value: "8.500+", label: "Tamamlanan İşlem" },
-  { value: "15 dk", label: "Ortalama Ulaşım" },
-  { value: "7/24", label: "Kesintisiz Hizmet" },
-];
+export default function Stats({ items }: { items?: CmsBlock[] }) {
+  const list = items ?? [];
+  if (!list.length) return null;
 
-export default function Stats() {
   return (
     <section className="bg-navy py-14 sm:py-16">
       <motion.div
@@ -20,16 +17,14 @@ export default function Stats() {
         viewport={{ once: true, amount: 0.4 }}
         className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-4 sm:px-6 lg:grid-cols-4"
       >
-        {STATS.map((stat) => (
-          <motion.div
-            key={stat.label}
-            variants={fadeInUp}
-            className="text-center"
-          >
+        {list.map((stat) => (
+          <motion.div key={stat.id} variants={fadeInUp} className="text-center">
             <p className="text-3xl font-extrabold text-accent sm:text-4xl">
-              {stat.value}
+              {stat.value || stat.title}
             </p>
-            <p className="mt-2 text-sm font-medium text-white/65">{stat.label}</p>
+            <p className="mt-2 text-sm font-medium text-white/65">
+              {stat.value ? stat.title : stat.description}
+            </p>
           </motion.div>
         ))}
       </motion.div>

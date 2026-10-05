@@ -4,9 +4,10 @@ import { motion } from "framer-motion";
 import { PhoneCall, MessageCircle } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { fadeInUp } from "@/lib/animations";
-import { SITE } from "@/lib/constants";
+import { useSite } from "@/lib/site-context";
 
 export default function CTA() {
+  const site = useSite();
   return (
     <section id="iletisim" className="bg-navy py-20 sm:py-28">
       <motion.div
@@ -25,11 +26,11 @@ export default function CTA() {
         </p>
 
         <div className="mt-8 flex w-full flex-col gap-4 sm:w-auto sm:flex-row">
-          <Button href={SITE.phoneHref} variant="primary" className="w-full sm:w-auto">
+          <Button href={site.phoneHref} variant="primary" className="w-full sm:w-auto">
             <PhoneCall className="h-5 w-5" />
-            Hemen Ara: {SITE.phone}
+            Hemen Ara: {site.phone}
           </Button>
-          <Button href={SITE.whatsappHref} variant="secondary" className="w-full sm:w-auto">
+          <Button href={site.whatsappHref} variant="secondary" className="w-full sm:w-auto">
             <MessageCircle className="h-5 w-5" />
             WhatsApp&apos;tan Yaz
           </Button>

@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { Home, PhoneCall, Search } from "lucide-react";
 import Button from "@/components/ui/Button";
-import { SITE } from "@/lib/constants";
+import { getSiteSettings } from "@/lib/cms/queries";
 
-export default function NotFound() {
+export default async function NotFound() {
+  const site = await getSiteSettings();
+
   return (
     <section className="relative flex min-h-[70vh] items-center overflow-hidden bg-navy py-20">
       <div
@@ -32,7 +34,7 @@ export default function NotFound() {
             <Home className="h-5 w-5" />
             Ana Sayfa
           </Button>
-          <Button href={SITE.phoneHref} variant="secondary">
+          <Button href={site.phoneHref} variant="secondary">
             <PhoneCall className="h-5 w-5" />
             Hemen Ara
           </Button>

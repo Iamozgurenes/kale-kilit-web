@@ -1,11 +1,14 @@
 import type { MetadataRoute } from "next";
-import { SITE } from "@/lib/constants";
 import { getPosts } from "@/lib/posts";
 import { getServices } from "@/lib/services";
-import { AUTHORIZED_BRANDS } from "@/lib/data/authorized-brands";
+import { getAuthorizedBrands, getSiteSettings } from "@/lib/cms/queries";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const base = SITE.url.replace(/\/$/, "");
+  const site = await getSiteSettings();
+  const base = site.url.replace(/\/$/, "");
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: base, lastModified: new Date(), changeFrequency: "daily", priority: 1 },
@@ -22,12 +25,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/kullanim-kosullari`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
   ];
 
-  const [services, posts] = await Promise.all([
+  const [services, posts, brands] = await Promise.all([
     getServices().catch(() => []),
     getPosts().catch(() => []),
+    getAuthorizedBrands().catch(() => []),
   ]);
 
-  const brandRoutes: MetadataRoute.Sitemap = AUTHORIZED_BRANDS.map((brand) => ({
+  const brandRoutes: MetadataRoute.Sitemap = brands.map((brand) => ({
     url: `${base}/yetkili-servis/${brand.slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly",

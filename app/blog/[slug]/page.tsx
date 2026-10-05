@@ -5,23 +5,19 @@ import Link from "next/link";
 import { ArrowLeft, CalendarDays, PhoneCall, Tag } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { getPostBySlug, getPosts } from "@/lib/posts";
-import { SITE } from "@/lib/constants";
+import { getSiteSettings } from "@/lib/cms/queries";
 import BlogCard from "@/components/ui/BlogCard";
 import { createPageMetadata } from "@/lib/seo";
 import { getBannerImage } from "@/lib/banner";
 
 type Props = { params: Promise<{ slug: string }> };
 
-export async function generateStaticParams() {
-  const posts = await getPosts().catch(() => []);
-  return posts.map((post) => ({ slug: post.slug }));
-}
-
-export const dynamicParams = false;
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getPostBySlug(slug).catch(() => null);
+  const [post, site] = await Promise.all([
+    getPostBySlug(slug).catch(() => null),
+    getSiteSettings(),
+  ]);
   if (!post) return { title: "Blog | Kale Kilit & Çilingir" };
 
   return createPageMetadata({
@@ -32,12 +28,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     path: `/blog/${slug}`,
     image: post.coverImage || undefined,
     type: "article",
+    site,
   });
 }
 
 export default async function BlogDetailPage({ params }: Props) {
   const { slug } = await params;
-  const post = await getPostBySlug(slug).catch(() => null);
+  const [post, site] = await Promise.all([
+    getPostBySlug(slug).catch(() => null),
+    getSiteSettings(),
+  ]);
   if (!post) notFound();
 
   const related = (
@@ -145,9 +145,9 @@ export default async function BlogDetailPage({ params }: Props) {
                   Yazıyı okurken ihtiyacınız olursa 7/24 bizi arayın.
                 </p>
                 <div className="mt-6 flex flex-col gap-3">
-                  <Button href={SITE.phoneHref} variant="primary" className="w-full">
+                  <Button href={site.phoneHref} variant="primary" className="w-full">
                     <PhoneCall className="h-5 w-5" />
-                    {SITE.phone}
+                    {site.phone}
                   </Button>
                   <Button href="/hizmetler" variant="secondary" className="w-full">
                     Hizmetleri Gör

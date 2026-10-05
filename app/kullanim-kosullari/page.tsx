@@ -1,16 +1,22 @@
 import Link from "next/link";
 import LegalPage from "@/components/legal/LegalPage";
-import { SITE } from "@/lib/constants";
-import { createPageMetadata } from "@/lib/seo";
+import LegalHtml from "@/components/legal/LegalHtml";
+import { metadataForPage } from "@/lib/seo";
+import { getPage, getSiteSettings } from "@/lib/cms/queries";
 
-export const metadata = createPageMetadata({
-  title: "Kullanım Koşulları",
-  description:
-    "Adana çilingir ve anahtarcı Kale Kilit web sitesi kullanım koşulları ve yasal bilgilendirme.",
-  path: "/kullanim-kosullari",
-});
+export async function generateMetadata() {
+  return metadataForPage("terms", {
+    title: "Kullanım Koşulları",
+    description:
+      "Adana çilingir ve anahtarcı Kale Kilit web sitesi kullanım koşulları ve yasal bilgilendirme.",
+    path: "/kullanim-kosullari",
+  });
+}
 
-export default function TermsPage() {
+export default async function TermsPage() {
+  const [page, site] = await Promise.all([getPage("terms"), getSiteSettings()]);
+  if (page?.body) return <LegalHtml page={page} path="/kullanim-kosullari" />;
+
   return (
     <LegalPage
       eyebrow="Yasal"
@@ -23,7 +29,7 @@ export default function TermsPage() {
           title: "1. Genel",
           content: (
             <p>
-              {SITE.name} web sitesi bilgilendirme ve iletişim amaçlıdır. Sitede
+              {site.name} web sitesi bilgilendirme ve iletişim amaçlıdır. Sitede
               yer alan içerikler genel niteliklidir; somut bir hizmet taahhüdü
               yerine geçmez. Hizmet koşulları çağrı veya yerinde keşif sonrası
               netleştirilir.
@@ -44,7 +50,7 @@ export default function TermsPage() {
           title: "3. Fikri Mülkiyet",
           content: (
             <p>
-              Sitedeki metin, görsel, logo ve tasarım unsurları {SITE.name}’e
+              Sitedeki metin, görsel, logo ve tasarım unsurları {site.name}’e
               aittir. İzinsiz kopyalanamaz, çoğaltılamaz veya ticari amaçla
               kullanılamaz.
             </p>
@@ -84,15 +90,15 @@ export default function TermsPage() {
           content: (
             <p>
               Sorularınız için{" "}
-              <a href={SITE.phoneHref} className="text-accent-ink hover:underline">
-                {SITE.phone}
+              <a href={site.phoneHref} className="text-accent-ink hover:underline">
+                {site.phone}
               </a>
               ,{" "}
               <a
-                href={`mailto:${SITE.email}`}
+                href={`mailto:${site.email}`}
                 className="text-accent-ink hover:underline"
               >
-                {SITE.email}
+                {site.email}
               </a>{" "}
               veya{" "}
               <Link href="/iletisim" className="text-accent-ink hover:underline">
