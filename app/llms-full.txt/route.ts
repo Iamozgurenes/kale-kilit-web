@@ -5,7 +5,6 @@ import { getPosts } from "@/lib/posts";
 import { getServices } from "@/lib/services";
 
 export const dynamic = "force-dynamic";
-export const revalidate = 0;
 
 export async function GET() {
   const [site, services, posts, brands] = await Promise.all([

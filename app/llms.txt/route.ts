@@ -3,7 +3,6 @@ import { LIVE_CACHE_CONTROL } from "@/lib/cms/live";
 import { getAuthorizedBrands, getSiteSettings } from "@/lib/cms/queries";
 
 export const dynamic = "force-dynamic";
-export const revalidate = 0;
 
 export async function GET() {
   const [site, brands] = await Promise.all([getSiteSettings(), getAuthorizedBrands()]);

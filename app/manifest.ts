@@ -2,7 +2,6 @@ import type { MetadataRoute } from "next";
 import { getSiteSettings } from "@/lib/cms/queries";
 
 export const dynamic = "force-dynamic";
-export const revalidate = 0;
 
 export default async function manifest(): Promise<MetadataRoute.Manifest> {
   const site = await getSiteSettings();

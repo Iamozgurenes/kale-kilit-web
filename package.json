@@ -2,36 +2,51 @@
   "name": "kale-kilit-web",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "cms:setup": "node scripts/setup-cms.mjs",
-    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
+    "preview": "vite preview",
+    "deploy": "vinext-cloudflare deploy",
+    "cf-typegen": "cf workers types",
+    "dev:vinext": "vite dev --port 3001",
+    "build:vinext": "vite build",
+    "start:vinext": "vite preview",
+    "deploy:vinext": "vinext-cloudflare deploy"
   },
   "dependencies": {
-    "@opennextjs/cloudflare": "^1.20.8",
+    "@vinext/cloudflare": "^1.0.1",
     "framer-motion": "^12.42.2",
     "lucide-react": "^1.25.0",
     "next": "^16.3.8",
     "pocketbase": "^0.27.0",
     "postcss": "^8.5.19",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
-    "sharp": "^0.34.5"
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-server-dom-webpack": "^19.3.0",
+    "sharp": "^0.34.5",
+    "vinext": "^1.0.1"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^2.0.0-beta.sha-52b0dc0e9",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6.1.2",
+    "@vitejs/plugin-rsc": "^0.5.35",
+    "cf": "^1.0.0-beta.12",
     "eslint": "^9",
     "eslint-config-next": "^16.3.8",
     "tailwindcss": "^4.3.3",
     "typescript": "^5",
+    "vite": "^8.3.0",
     "wrangler": "^4.147.0"
-  }
+  },
+  "type": "module"
 }

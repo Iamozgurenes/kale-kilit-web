@@ -3,7 +3,6 @@ import { LIVE_CACHE_CONTROL } from "@/lib/cms/live";
 import { getServiceBySlug } from "@/lib/services";
 
 export const dynamic = "force-dynamic";
-export const revalidate = 0;
 
 type Params = { params: Promise<{ slug: string }> };
 

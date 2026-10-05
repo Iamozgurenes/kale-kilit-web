@@ -3,7 +3,6 @@ import { LIVE_CACHE_CONTROL } from "@/lib/cms/live";
 import { getPostBySlug } from "@/lib/posts";
 
 export const dynamic = "force-dynamic";
-export const revalidate = 0;
 
 type Params = { params: Promise<{ slug: string }> };
 

@@ -3,7 +3,6 @@ import { LIVE_CACHE_CONTROL } from "@/lib/cms/live";
 import { getPostCategories, getPosts } from "@/lib/posts";
 
 export const dynamic = "force-dynamic";
-export const revalidate = 0;
 
 export async function GET(request: Request) {
   try {
